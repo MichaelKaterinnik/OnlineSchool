@@ -1,2 +1,4 @@
-package com.school.models.studytools;public class Exam {
+package com.school.models.studytools;
+
+public class Exam {
 }
