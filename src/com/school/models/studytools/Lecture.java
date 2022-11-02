@@ -2,7 +2,8 @@ package com.school.models.studytools;
 
 public class Lecture {
     public static int counter = 0;
-    private static int id;
+    private int id;
+    public int courseID;
     String lectureTopic;
     Homework homework;
     AdditionalMaterials addMaterial;

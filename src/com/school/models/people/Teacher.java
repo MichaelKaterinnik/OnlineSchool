@@ -2,7 +2,7 @@ package com.school.models.people;
 
 public class Teacher {
     public static int counter = 0;
-    private static int id;
+    private int id;
     String teacherFirstName;
     String teacherSecondName;
 
