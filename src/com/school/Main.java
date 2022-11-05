@@ -2,6 +2,8 @@ package com.school;
 
 import com.school.models.studytools.Course;
 import com.school.models.studytools.Lecture;
+import com.school.models.studytools.services.CourseService;
+import com.school.models.studytools.services.LectureService;
 
 public class Main {
 
@@ -13,26 +15,27 @@ public class Main {
         Lecture fifthLecture = new Lecture();
         System.out.println(Lecture.counter); */
 
-        course1Init();
+        CourseService courseService = new CourseService();
+        Course course1 = courseService.createCourse(1);
+
+        LectureService lectureService = new LectureService();
+        Lecture lecture1 = lectureService.createLecture();
+        lecture1.courseID = course1.getCourseNumber();
+
+        Lecture lecture2 = lectureService.createLecture();
+        lecture2.courseID = course1.getCourseNumber();
+        Lecture lecture3 = lectureService.createLecture();
+        lecture3.courseID = course1.getCourseNumber();
+        Lecture lecture4 = lectureService.createLecture();
+        lecture4.courseID = course1.getCourseNumber();
+        Lecture lecture5 = lectureService.createLecture();
+        lecture5.courseID = course1.getCourseNumber();
+        Lecture lecture6 = lectureService.createLecture();
+        lecture6.courseID = course1.getCourseNumber();
+
+        System.out.println("Остання створена лекція належить до курсу № "+ lecture6.courseID);
+        System.out.println("Загальна кількість створених лекцій - " + Lecture.getCounter());
     }
 
-    static void course1Init()    {
-        Course course1 = new Course();
-        Lecture lecture1 = new Lecture();
-        course1.courseNumber = 1;
-        course1.setID(course1.courseNumber);
-        lecture1.courseID = course1.getID();
-        Lecture lecture2 = new Lecture();
-        Lecture lecture3 = new Lecture();
-        Lecture lecture4 = new Lecture();
-        Lecture lecture5 = new Lecture();
-        Lecture lecture6 = new Lecture();
-        lecture2.courseID = course1.getID();
-        lecture3.courseID = course1.getID();
-        lecture4.courseID = course1.getID();
-        lecture5.courseID = course1.getID();
-        lecture6.courseID = course1.getID();
-        System.out.println(lecture6.courseID);
-        System.out.println(Lecture.counter);
-    }
+
 }

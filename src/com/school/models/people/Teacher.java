@@ -1,12 +1,14 @@
 package com.school.models.people;
 
 public class Teacher {
-    public static int counter = 0;
+    private static int counter = 0;
     private int id;
-    String teacherFirstName;
-    String teacherSecondName;
+    private String teacherFirstName;
+    private String teacherSecondName;
 
-    public Teacher(String firstName, String secondName)    {
+
+    // constructors:
+        public Teacher(String firstName, String secondName)    {
         this.teacherFirstName = firstName;
         this.teacherSecondName = secondName;
         counter++;
@@ -20,5 +22,18 @@ public class Teacher {
     public Teacher()    {
         counter++;
     }
+
+
+    // getters & setters:
+    public int getCounter() { return counter; }
+
+    public void setId(int id)   { this.id = id; }
+    public int getId()  { return id; }
+
+    public void setTeacherFirstName(String firstName)   { this.teacherFirstName = firstName; }
+    public String getTeacherFirstName() { return teacherFirstName; }
+
+    public void setTeacherSecondName(String teacherSecondName) { this.teacherSecondName = teacherSecondName; }
+    public String getTeacherSecondName()    { return teacherSecondName; }
 
 }

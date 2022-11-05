@@ -1,6 +1,11 @@
 package com.school.models.people.services;
 
-class TeacherService {
+import com.school.models.people.Teacher;
 
+public class TeacherService {
+
+    public Teacher createTeacher()  {
+        return new Teacher();
+    }
 
 }

@@ -1,6 +1,11 @@
 package com.school.models.studytools.services;
 
-class HomeworkService {
+import com.school.models.studytools.Homework;
 
+public class HomeworkService {
+
+    public Homework createHomework()    {
+        return new Homework();
+    }
 
 }

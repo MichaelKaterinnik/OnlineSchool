@@ -1,6 +1,12 @@
 package com.school.models.people.services;
 
-class StudentService {
+import com.school.models.people.Student;
+
+public class StudentService {
+
+    public Student createStudent()  {
+        return new Student();
+    }
 
 
 }

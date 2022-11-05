@@ -1,13 +1,15 @@
 package com.school.models.studytools;
 
 public class Lecture {
-    public static int counter = 0;
+    private static int counter = 0;
     private int id;
     public int courseID;
-    String lectureTopic;
+    private String lectureTopic;
     Homework homework;
     AdditionalMaterials addMaterial;
 
+
+    //constructors:
     public Lecture(String topic) {
         this.lectureTopic = topic;
         counter++;
@@ -36,5 +38,19 @@ public class Lecture {
     public Lecture()   {
         counter++;
     }
+
+
+    // getters & setters:
+    public static int getCounter() { return counter; }
+
+    public void setId(int id) { this.id = id; }
+    public int getId() { return id; }
+
+    public void setCourseID(int courseID) { this.courseID = courseID; }
+    public int getCourseID() { return courseID; }
+
+    public void setLectureTopic(String lectureTopic) { this.lectureTopic = lectureTopic; }
+    public String getLectureTopic() { return lectureTopic; }
+
 
 }
