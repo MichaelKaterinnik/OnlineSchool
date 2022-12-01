@@ -5,8 +5,7 @@ import com.school.models.people.Teacher;
 
 public class Course {
     private static int counter = 0;
-    private int id;
-    private int courseNumber;
+    public int id;
     private String courseName;
     Teacher teacher;
     Student student;
@@ -15,7 +14,7 @@ public class Course {
 
     // constructors:
     public Course(int courseNumber)    {
-        this.courseNumber = courseNumber;
+        this.id = courseNumber;
         counter++;
     }
 
@@ -25,13 +24,13 @@ public class Course {
     }
 
     public Course(String courseName, int courseNumber)    {
-        this.courseNumber = courseNumber;
+        this.id = courseNumber;
         this.courseName = courseName;
         counter++;
     }
 
     public Course(int courseNumber, String courseName)    {
-        this.courseNumber = courseNumber;
+        this.id = courseNumber;
         this.courseName = courseName;
         counter++;
     }
@@ -48,9 +47,6 @@ public class Course {
         this.id = id;
     }
     public int getID()  { return id; }
-
-    public void setCourseNumber(int courseNumber) { this.courseNumber = courseNumber; }
-    public int getCourseNumber() { return courseNumber; }
 
     public void setCourseName(String courseName) { this.courseName = courseName; }
     public String getCourseName() { return courseName; }
