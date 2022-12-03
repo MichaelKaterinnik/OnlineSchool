@@ -4,8 +4,8 @@ public class Homework {
     private static int counter = 0;
     private int id;
     private int homeworkMark;
-    private String HomeworkTask;
-    private int LectureID;
+    private String homeworkTask;
+    private int lectureID;
 
 
     // constructors:
@@ -21,16 +21,16 @@ public class Homework {
     public void setHomeworkMark(int id) { this.homeworkMark = homeworkMark; }
     public int setHomeworkMark()    { return homeworkMark; }
     public void setHomeworkTask(String homeworkTask) {
-        this.HomeworkTask = homeworkTask;
+        this.homeworkTask = homeworkTask;
     }
     public String getHomeworkTask() {
-        return HomeworkTask;
+        return homeworkTask;
     }
 
     public void setLectureID(int lectureID) {
-        this.LectureID = lectureID;
+        this.lectureID = lectureID;
     }
     public int getLectureID() {
-        return LectureID;
+        return lectureID;
     }
 }

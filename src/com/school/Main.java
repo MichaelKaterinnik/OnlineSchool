@@ -5,17 +5,15 @@ import com.school.models.studytools.Lecture;
 import com.school.models.studytools.services.CourseService;
 import com.school.models.studytools.services.LectureService;
 
-import java.util.Scanner;
-
 
 public class Main {
 
     public static void main(String[] args) {
         // ДЗ до лекції № 7:
-        CourseService.CategoryChanger(); // метод знаходиться в класі CourseServise
+        MainService.CategoryChanger(); // метод знаходиться в класі CourseServise
 
         // ДЗ до лекції № 6:
-        CourseService courseService = new CourseService();
+        /*CourseService courseService = new CourseService();
         Course course1 = courseService.createCourse(1);
 
         LectureService lectureService2 = new LectureService();
@@ -34,7 +32,7 @@ public class Main {
         lecture6.setCourseID(course1.getID());
 
         System.out.println("Остання створена лекція належить до курсу № "+ lecture6.getCourseID());
-        System.out.println("Загальна кількість створених лекцій - " + Lecture.getCounter());
+        System.out.println("Загальна кількість створених лекцій - " + Lecture.getCounter());*/
 
     }
 

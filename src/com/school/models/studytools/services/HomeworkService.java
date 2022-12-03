@@ -6,10 +6,11 @@ import com.school.models.studytools.Lecture;
 import java.util.Scanner;
 
 public class HomeworkService {
-    public static final String ENTER_HOMEWORK_NAME = "Введіть тему домашньго завдання українською мовою";
-    public static final String ENTER_LECTURE_NUMBER = "Введіть лекцію (ID лекції), до якої належатиме домашнє завдання";
-    public static final String ENTER_HW_NAME_EXCEPTION = "Введіть тему домашньгго завдання українською мовою,будь-ласка";
-    public static final String ENTER_LECTURE_NUMBER_EXCEPTION = "Введіть номер існуючої лекції (ID), до якої належатиме домашнє завдання";
+    private static final String ENTER_HOMEWORK_NAME = "Введіть тему домашньго завдання українською мовою";
+    private static final String ENTER_LECTURE_NUMBER = "Введіть лекцію (ID лекції), до якої належатиме домашнє завдання";
+    private static final String ENTER_HW_NAME_EXCEPTION = "Введіть тему домашньгго завдання українською мовою,будь-ласка";
+    private static final String ENTER_LECTURE_NUMBER_EXCEPTION = "Введіть номер існуючої лекції (ID), до якої належатиме домашнє завдання";
+    private static final String SAVE = "Зберегти зміни?\nВведіть 1, якщо так, або будь-яку клавішу - якщо ні";
 
 
     public Homework createHomework()    {
@@ -24,7 +25,7 @@ public class HomeworkService {
         boolean st1 = true;
         while (st1) {
             if (console.hasNextLine())  {
-                newHomework.setHomeworkTask(console.nextLine()); // тут зробити реалызацыю через пыдгрузку тексту завдань з файла
+                newHomework.setHomeworkTask(console.nextLine()); // тут зробити реалізацію через підгрузку тексту завдань з файла
                 st1 = false;
             } else {
                 System.out.println(ENTER_HW_NAME_EXCEPTION);

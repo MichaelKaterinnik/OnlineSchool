@@ -5,11 +5,12 @@ import com.school.models.studytools.Lecture;
 import java.util.Scanner;
 
 public class LectureService {
-    public static final String ENTER_LECTURE_NAME = "Введіть тему нової лекції українською мовою";
-    public static final String ENTER_COURSE_NUMBER = "Введіть курс (ID курсу), до якого належатиме лекція";
-    public static final String ENTER_LECTURE_NAME_EXCEPTION = "Введіть тему нової лекції українською мовою,будь-ласка";
-    public static final String ENTER_COURSE_NUMBER_EXCEPTION = "Введіть номер існуючого курсу (ID курсу), до якого належатиме лекція," +
+    private static final String ENTER_LECTURE_NAME = "Введіть тему нової лекції українською мовою";
+    private static final String ENTER_COURSE_NUMBER = "Введіть курс (ID курсу), до якого належатиме лекція";
+    private static final String ENTER_LECTURE_NAME_EXCEPTION = "Введіть тему нової лекції українською мовою,будь-ласка";
+    private static final String ENTER_COURSE_NUMBER_EXCEPTION = "Введіть номер існуючого курсу (ID курсу), до якого належатиме лекція," +
             "будь-ласка";
+    private static final String SAVE = "Зберегти зміни?\nВведіть 1, якщо так, або будь-яку клавішу - якщо ні";
 
     public Lecture createLecture()  {
         return new Lecture();
