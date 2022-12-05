@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class CourseService {
     private static final String ENTER_COURSE_ID = "Введіть ID створюваного курсу";
     private static final String ENTER_COURSE_NUMBER_EXCEPTION = "Введіть номер ID курсу, будь-ласка";
-    private static final String SAVE = "Зберегти зміни?\nВведіть 1, якщо так, або будь-яку клавішу - якщо ні";
 
 
     public Course createCourse()    {

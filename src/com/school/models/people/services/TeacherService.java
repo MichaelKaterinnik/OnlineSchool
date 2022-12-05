@@ -14,7 +14,6 @@ public class TeacherService {
     private static final String ENTER_SNAME_EXCEPTION = "Введіть прізвище українською мовою,будь-ласка";
 
     private static final String ENTER_ID_EXCEPTION = "Введіть ID вчителя, будь-ласка";
-    private static final String SAVE = "Зберегти зміни?\nВведіть 1, якщо так, або будь-яку клавішу - якщо ні";
 
 
     public Teacher createTeacher(String firstName, String secondName)  {
@@ -54,7 +53,7 @@ public class TeacherService {
         while (st3) {
             if (console.hasNextInt())  {
                 newTeacher.setId(console.nextInt());
-                System.out.printf("Ви присвоїли вчителю %s %s ID під носером %d", newTeacher.getTeacherFirstName(), newTeacher.getTeacherSecondName(), newTeacher.getId());
+                System.out.printf("Ви присвоїли вчителю %s %s ID під номером %d", newTeacher.getTeacherFirstName(), newTeacher.getTeacherSecondName(), newTeacher.getId());
                 st3 = false;
             } else {
                 System.out.println(ENTER_ID_EXCEPTION);

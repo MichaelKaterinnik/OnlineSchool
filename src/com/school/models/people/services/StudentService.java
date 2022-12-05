@@ -13,7 +13,6 @@ public class StudentService {
     private static final String ENTER_SNAME_EXCEPTION = "Введіть прізвище студента українською мовою,будь-ласка";
 
     private static final String ENTER_ID_EXCEPTION = "Введіть ID студента, будь-ласка";
-    private static final String SAVE = "Зберегти зміни?\nВведіть 1, якщо так, або будь-яку клавішу - якщо ні";
 
 
     public Student createStudent(String firstName, String secondName)  {
@@ -53,7 +52,7 @@ public class StudentService {
         while (st3) {
             if (console.hasNextInt())  {
                 newStudent.setId(console.nextInt());
-                System.out.printf("Ви присвоїли студенту %s %s ID під носером %d", newStudent.getStudentFirstName(), newStudent.getStudentSecondName(),
+                System.out.printf("Ви присвоїли студенту %s %s ID під номером %d", newStudent.getStudentFirstName(), newStudent.getStudentSecondName(),
                         newStudent.getId());
                 st3 = false;
             } else {
