@@ -17,7 +17,6 @@ public class MainService {
     private final static String CATEGORY_LECTURE = "Ви знаходитесь у категорії вибору лекцій. Чи бажаєте Ви додати нову лекцію?\nВведіть " +
             "число 1, якщо так:";
     private final static String CHANGER_EXCEPTION = "Введіть одне з запитуваних чисел, будь-ласка";
-    private final static String DO_YOU_WANT_TO_CONTINUE = "Чи бажаєте Ви продовжувати працювати з програмою?\nВведіть будь-який символ, якщо ні або введіть число 1, щоб продовжити роботу";
 
 
     public static String getCourseChangerString() {
@@ -48,7 +47,6 @@ public class MainService {
         Scanner console = new Scanner(System.in);
         while (true) {
             System.out.println(CATEGORY_CHANGER);
-            if (console.hasNext()) {
                 if (console.hasNextInt()) {
                    int category = console.nextInt();
                     switch (category) {
@@ -87,7 +85,6 @@ public class MainService {
                             }
                         }
                         default -> {
-                            System.out.println(CHANGER_EXCEPTION);
                             continue;
                         }
                     }
@@ -95,21 +92,7 @@ public class MainService {
                     System.out.println("роботу метода CategoryChanger закінчено");
                     break;
                 } else {
-                    continue;
-                }
-            }
-            System.out.println(DO_YOU_WANT_TO_CONTINUE);
-                /*
-                Коли програма доходить сюди, якщо ми при виході з категорії ввели НеЧисло, а інший символ, то вона не дає можливості
-                користувачу ввести символ з клавіатури щоб запустити наступний блок if-else і перейти за потреби на початок циклу, - а
-                одразу завершує програму :О Хоча далі за задумом йде знов перевірка консолі на число 1 або інший символ
-                */
-            if (console.hasNext() && console.hasNextInt() && console.nextInt() == 1) {
-                continue;
-            } else {
-                System.out.println("роботу метода CategoryChanger закінчено");
-                break;
-            }
+                    continue;}
         }
         console.close();
     }
