@@ -27,38 +27,37 @@ public class StudentService {
         StudentService studentService = new StudentService();
         Student newStudent = studentService.createStudent();
         System.out.println(ENTER_STUDENT_FIRST_NAME);
-        boolean st1 = true;
-        while (st1) {
+        while (true) {
             if (console.hasNextLine())  {
                 newStudent.setStudentFirstName(console.nextLine());
-                st1 = false;
+                break;
             } else {
                 System.out.println(ENTER_NAME_EXCEPTION);
             }
         }
         System.out.println(ENTER_STUDENT_SECOND_NAME);
-        boolean st2 = true;
-        while (st2) {
+        while (true) {
             if (console.hasNextLine())  {
                 newStudent.setStudentSecondName(console.nextLine());
-                st2 = false;
+                break;
             } else {
                 System.out.println(ENTER_SNAME_EXCEPTION);
             }
         }
         System.out.printf("Додано студента %s %s", newStudent.getStudentFirstName(), newStudent.getStudentSecondName());
+        System.out.println();
         System.out.println(ENTER_ID);
-        boolean st3 = true;
-        while (st3) {
+        while (true) {
             if (console.hasNextInt())  {
                 newStudent.setId(console.nextInt());
                 System.out.printf("Ви присвоїли студенту %s %s ID під номером %d", newStudent.getStudentFirstName(), newStudent.getStudentSecondName(),
                         newStudent.getId());
-                st3 = false;
+                break;
             } else {
                 System.out.println(ENTER_ID_EXCEPTION);
             }
         }
+        System.out.println();
         return newStudent;
     }
 

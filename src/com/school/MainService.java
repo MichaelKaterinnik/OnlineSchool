@@ -13,7 +13,7 @@ public class MainService {
             "Введіть потрібне число з 4-х або введіть exit щоб вийти з програми";
     private final static String CATEGORY_COURSE = "Ви знаходитесь у категорії вибору курсу. Чи бажаєте Ви додати новий курс?\nВведіть число 1, якщо так:";
     private final static String CATEGORY_TEACHER = "Ви знаходитесь у категорії вибору вчителів. Чи бажаєте Ви додати нового вчителя?\nВведіть число 1, якщо так:";
-    private final static String CATEGORY_STUDENT = "Ви знаходитесь у категорії вибору студентівю Чи бажаєте Ви додати нового студента?\nВведіть число 1, якщо так:";
+    private final static String CATEGORY_STUDENT = "Ви знаходитесь у категорії вибору студентів. Чи бажаєте Ви додати нового студента?\nВведіть число 1, якщо так:";
     private final static String CATEGORY_LECTURE = "Ви знаходитесь у категорії вибору лекцій. Чи бажаєте Ви додати нову лекцію?\nВведіть " +
             "число 1, якщо так:";
     private final static String CHANGER_EXCEPTION = "Введіть одне з запитуваних чисел, будь-ласка";
@@ -43,58 +43,84 @@ public class MainService {
         return CHANGER_EXCEPTION;
     }
 
-    public static void CategoryChanger() {
+    public static void categoryChanger() {
         Scanner console = new Scanner(System.in);
         while (true) {
             System.out.println(CATEGORY_CHANGER);
-                if (console.hasNextInt()) {
-                   int category = console.nextInt();
-                    switch (category) {
-                        case 1 -> {
-                            System.out.println(CATEGORY_COURSE);
-                            if (console.hasNextInt() && console.nextInt() == 1) {
-                                CourseService courseService = new CourseService();
-                                courseService.createCourseByTerminal();
-                            }
-                        }
-                        case 2 -> {
-                            System.out.println(CATEGORY_TEACHER);
-                            if (console.hasNextInt() && console.nextInt() == 1) {
-                                TeacherService teacherService = new TeacherService();
-                                teacherService.createTeacherByTerminal();
-                            }
-                        }
-                        case 3 -> {
-                            System.out.println(CATEGORY_STUDENT);
-                            if (console.hasNextInt() && console.nextInt() == 1) {
-                                StudentService studentService = new StudentService();
-                                studentService.createStudentByTerminal();
-                            }
-                        }
-                        case 4 -> {
-                            System.out.println(CATEGORY_LECTURE);
-                            if (console.hasNextInt() && console.nextInt() == 1) {
-                                LectureService lectureService = new LectureService();
-                                lectureService.createLectureByTerminal();
-                                System.out.println("Загальна кількість створених лекцій: " + Lecture.getCounter());
-                                if (Lecture.getCounter() == 8) {
-                                    console.close();
-                                    System.out.println("Роботу програми закінчено - створено 8 лекцій");
-                                    return;
-                                }
-                            }
-                        }
-                        default -> {
-                            continue;
+            if (console.hasNextInt()) {
+                int category = console.nextInt();
+                switch (category) {
+                    case 1 -> {
+                        courseCase();
+                    }
+                    case 2 -> {
+                        teacherCase();
+                    }
+                    case 3 -> {
+                        studentCase();
+                    }
+                    case 4 -> {
+                        lectureCase();
+                        if (Lecture.getCounter() == 8) {
+                            console.close();
+                            System.out.println("Роботу програми закінчено - створено 8 лекцій");
+                            return;
                         }
                     }
-                } else if (console.hasNextLine() && console.nextLine().equalsIgnoreCase("exit"))   {
-                    System.out.println("роботу метода CategoryChanger закінчено");
-                    break;
-                } else {
-                    continue;}
+                    default -> {
+                        continue;
+                    }
+                }
+            } else if (console.hasNextLine() && console.nextLine().equalsIgnoreCase("exit")) {
+                System.out.println("роботу метода CategoryChanger закінчено");
+                console.close();
+                return;
+            } else {
+                System.out.println();
+                continue;
+            }
         }
-        console.close();
+    }
+
+    private static void courseCase() {
+        System.out.println(CATEGORY_COURSE);
+        Scanner console = new Scanner(System.in);
+        if (console.hasNextInt() && console.nextInt() == 1) {
+            CourseService courseService = new CourseService();
+            courseService.createCourseByTerminal();
+        }
+    }
+
+    private static void teacherCase() {
+        System.out.println(CATEGORY_TEACHER);
+        Scanner console = new Scanner(System.in);
+        if (console.hasNextInt() && console.nextInt() == 1) {
+            TeacherService teacherService = new TeacherService();
+            teacherService.createTeacherByTerminal();
+        }
+    }
+
+    private static void studentCase() {
+        System.out.println(CATEGORY_STUDENT);
+        Scanner console = new Scanner(System.in);
+        if (console.hasNextInt() && console.nextInt() == 1) {
+            StudentService studentService = new StudentService();
+            studentService.createStudentByTerminal();
+        }
+    }
+
+    private static void lectureCase() {
+        System.out.println(CATEGORY_LECTURE);
+        Scanner console = new Scanner(System.in);
+        if (console.hasNextInt() && console.nextInt() == 1) {
+            LectureService lectureService = new LectureService();
+            lectureService.createLectureByTerminal();
+            System.out.println("Загальна кількість створених лекцій: " + Lecture.getCounter());
+        }
+    }
+
+    private MainService() {
+
     }
 }
 

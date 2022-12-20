@@ -28,33 +28,30 @@ public class TeacherService {
         TeacherService teacherService = new TeacherService();
         Teacher newTeacher = teacherService.createTeacher();
         System.out.println(ENTER_TEACHER_FIRST_NAME);
-        boolean st1 = true;
-        while (st1) {
-            if (console.hasNextLine())  {
+        while (true) {
+            if (console.hasNext("[а-я]+"))  {
                 newTeacher.setTeacherFirstName(console.nextLine());
-                st1 = false;
+                break;
             } else {
                 System.out.println(ENTER_NAME_EXCEPTION);
             }
         }
         System.out.println(ENTER_TEACHER_SECOND_NAME);
-        boolean st2 = true;
-        while (st2) {
-            if (console.hasNextLine())  {
+        while (true) {
+            if (console.hasNext("[а-я]+"))  {
                 newTeacher.setTeacherSecondName(console.nextLine());
-                st2 = false;
+                break;
             } else {
                 System.out.println(ENTER_SNAME_EXCEPTION);
             }
         }
-        System.out.println("Додано вчителя" + newTeacher.getTeacherFirstName() + " " + newTeacher.getTeacherSecondName());
-        System.out.println(ENTER_ID);
-        boolean st3 = true;
-        while (st3) {
+        System.out.println("Додано вчителя " + newTeacher.getTeacherFirstName() + " " + newTeacher.getTeacherSecondName());
+        while (true) {
+            System.out.println(ENTER_ID);
             if (console.hasNextInt())  {
                 newTeacher.setId(console.nextInt());
                 System.out.printf("Ви присвоїли вчителю %s %s ID під номером %d", newTeacher.getTeacherFirstName(), newTeacher.getTeacherSecondName(), newTeacher.getId());
-                st3 = false;
+                break;
             } else {
                 System.out.println(ENTER_ID_EXCEPTION);
             }
