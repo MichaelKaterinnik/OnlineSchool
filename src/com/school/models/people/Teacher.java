@@ -25,7 +25,7 @@ public class Teacher {
 
 
     // getters & setters:
-    public int getCounter() { return counter; }
+    public static int getCounter() { return counter; }
 
     public void setId(int id)   { this.id = id; }
     public int getId()  { return id; }

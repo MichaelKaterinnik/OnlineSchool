@@ -22,7 +22,7 @@ public class StudentService {
         return new Student();
     }
 
-    public Student createStudentByTerminal()    {
+    public void createStudentByTerminal()    {
         Scanner console = new Scanner(System.in);
         StudentService studentService = new StudentService();
         Student newStudent = studentService.createStudent();
@@ -58,7 +58,7 @@ public class StudentService {
             }
         }
         System.out.println();
-        return newStudent;
+        StudentRepo.saveStudent(newStudent);
     }
 
 }

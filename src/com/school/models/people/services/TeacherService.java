@@ -23,7 +23,7 @@ public class TeacherService {
         return new Teacher();
     }
 
-    public Teacher createTeacherByTerminal()    {
+    public void createTeacherByTerminal()    {
         Scanner console = new Scanner(System.in);
         TeacherService teacherService = new TeacherService();
         Teacher newTeacher = teacherService.createTeacher();
@@ -56,7 +56,7 @@ public class TeacherService {
                 System.out.println(ENTER_ID_EXCEPTION);
             }
         }
-        return newTeacher;
+        TeacherRepo.saveTeacher(newTeacher);
     }
 
 }

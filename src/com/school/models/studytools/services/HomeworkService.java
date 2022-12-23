@@ -16,31 +16,29 @@ public class HomeworkService {
         return new Homework();
     }
 
-    public Homework createHomeworkByTerminal()    {
+    public void createHomeworkByTerminal()    {
         Scanner console = new Scanner(System.in);
         HomeworkService hwService = new HomeworkService();
         Homework newHomework = hwService.createHomework();
         System.out.println(ENTER_HOMEWORK_NAME);
-        boolean st1 = true;
-        while (st1) {
+        while (true) {
             if (console.hasNextLine())  {
                 newHomework.setHomeworkTask(console.nextLine()); // тут зробити реалізацію через підгрузку тексту завдань з файла
-                st1 = false;
+                break;
             } else {
                 System.out.println(ENTER_HW_NAME_EXCEPTION);
             }
         }
         System.out.println(ENTER_LECTURE_NUMBER);
-        boolean st2 = true;
-        while (st2) {
+        while (true) {
             if (console.hasNextInt())  {
                 newHomework.setLectureID(console.nextInt());
                 System.out.println("Ви присвоїли створене завдання лекції з ID №" + newHomework.getLectureID());
-                st2 = false;
+                break;
             } else {
                 System.out.println(ENTER_LECTURE_NUMBER_EXCEPTION);
             }
         }
-        return newHomework;
+        HomeworkRepo.saveHomework(newHomework);
     }
 }

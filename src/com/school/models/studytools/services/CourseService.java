@@ -1,8 +1,6 @@
 package com.school.models.studytools.services;
 
 import com.school.models.studytools.Course;
-import com.school.models.studytools.Homework;
-import com.school.models.studytools.Lecture;
 
 import java.util.Scanner;
 
@@ -25,24 +23,22 @@ public class CourseService {
     }
 
 
-        public Course createCourseByTerminal()    {
+        public void createCourseByTerminal()    {
         Scanner console = new Scanner(System.in);
         CourseService courseService = new CourseService();
         Course newCourse = courseService.createCourse();
         System.out.println(ENTER_COURSE_ID);
-        boolean st = true;
-        int counter = 0;
-        while (st) {
+        while (true) {
             if (console.hasNextInt())  {
                 newCourse.setID(console.nextInt());
                 System.out.println("Ви присвоїли створеному курсу ID №" + newCourse.getID());
-                st = false;
+                break;
             } else {
                 System.out.println(ENTER_COURSE_NUMBER_EXCEPTION);
                 continue;
             }
         }
-        return newCourse;
+        CourseRepo.saveCourse(newCourse);
     }
 
 }

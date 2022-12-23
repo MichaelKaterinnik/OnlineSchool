@@ -1,7 +1,10 @@
 package com.school;
 
+import com.school.models.people.Student;
+import com.school.models.people.Teacher;
 import com.school.models.people.services.StudentService;
 import com.school.models.people.services.TeacherService;
+import com.school.models.studytools.Course;
 import com.school.models.studytools.Lecture;
 import com.school.models.studytools.services.CourseService;
 import com.school.models.studytools.services.LectureService;
@@ -88,6 +91,7 @@ public class MainService {
         if (console.hasNextInt() && console.nextInt() == 1) {
             CourseService courseService = new CourseService();
             courseService.createCourseByTerminal();
+            System.out.println("Загальна кількість створених курсів: " + Course.getCounter());
         }
     }
 
@@ -97,6 +101,7 @@ public class MainService {
         if (console.hasNextInt() && console.nextInt() == 1) {
             TeacherService teacherService = new TeacherService();
             teacherService.createTeacherByTerminal();
+            System.out.println("Загальна кількість доданих вчителів: " + Teacher.getCounter());
         }
     }
 
@@ -106,6 +111,7 @@ public class MainService {
         if (console.hasNextInt() && console.nextInt() == 1) {
             StudentService studentService = new StudentService();
             studentService.createStudentByTerminal();
+            System.out.println("Загальна кількість доданих студентів: " + Student.getCounter());
         }
     }
 

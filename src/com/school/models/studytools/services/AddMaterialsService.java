@@ -1,7 +1,6 @@
 package com.school.models.studytools.services;
 
 import com.school.models.studytools.AdditionalMaterials;
-import com.school.models.studytools.Homework;
 
 import java.util.Scanner;
 
@@ -17,32 +16,30 @@ public class AddMaterialsService {
         return new AdditionalMaterials();
     }
 
-    public AdditionalMaterials createHomeworkByTerminal()    {
+    public void createHomeworkByTerminal()    {
         Scanner console = new Scanner(System.in);
         AddMaterialsService AddService = new AddMaterialsService();
         AdditionalMaterials newAddMaterials = AddService.createAdditionalMaterials();
         System.out.println(ENTER_ADDMATERIALS_NAME);
-        boolean st1 = true;
-        while (st1) {
+        while (true) {
             if (console.hasNextLine())  {
                 newAddMaterials.setTopic(console.nextLine()); // тут зробити реалізацію через підгрузку тексту завдань з файла
-                st1 = false;
+                break;
             } else {
                 System.out.println(ENTER_AM_NAME_EXCEPTION);
             }
         }
         System.out.println(ENTER_LECTURE_NUMBER);
-        boolean st2 = true;
-        while (st2) {
+        while (true) {
             if (console.hasNextInt())  {
                 newAddMaterials.setLectureID(console.nextInt());
                 System.out.println("Ви присвоїли створене завдання лекції з ID №" + newAddMaterials.getLectureID());
-                st2 = false;
+                break;
             } else {
                 System.out.println(ENTER_LECTURE_NUMBER_EXCEPTION);
             }
         }
-        return newAddMaterials;
+        AddMatsRepo.saveAdditionalMaterial(newAddMaterials);
     }
 
 }

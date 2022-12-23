@@ -15,32 +15,30 @@ public class LectureService {
         return new Lecture();
     }
 
-    public Lecture createLectureByTerminal()    {
+    public void createLectureByTerminal()    {
         Scanner console = new Scanner(System.in);
         LectureService lectureService = new LectureService();
         Lecture newLecture = lectureService.createLecture();
         System.out.println(ENTER_LECTURE_NAME);
-        boolean st1 = true;
-        while (st1) {
+        while (true) {
             if (console.hasNextLine())  {
                 newLecture.setLectureTopic(console.nextLine());
-                st1 = false;
+                break;
             } else {
                 System.out.println(ENTER_LECTURE_NAME_EXCEPTION);
             }
         }
         System.out.println(ENTER_COURSE_NUMBER);
-        boolean st2 = true;
-        while (st2) {
+        while (true) {
             if (console.hasNextInt())  {
                 newLecture.setCourseID(console.nextInt());
                 System.out.println("Ви присвоїли створену лекцію курсу з номером (ID)" + newLecture.getCourseID());
-                st2 = false;
+                break;
             } else {
                 System.out.println(ENTER_COURSE_NUMBER_EXCEPTION);
             }
         }
-        return newLecture;
+        LectureRepo.saveLecture(newLecture);
     }
 
 }
