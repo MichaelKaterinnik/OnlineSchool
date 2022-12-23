@@ -8,6 +8,10 @@ public class CourseRepo {
     private static Course[] coursesRepository = new Course[capacity];
 
 
+    public static Course[] getCoursesRepository() {
+        return coursesRepository;
+    }
+
     public static void saveCourse(Course newCourse) {
         if (size == capacity) {
             grow();

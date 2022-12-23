@@ -5,7 +5,7 @@ import com.school.models.people.Teacher;
 
 public class Course {
     private static int counter = 0;
-    public int id;
+    private int id = counter;
     private String courseName;
     Teacher teacher;
     Student student;
@@ -13,32 +13,13 @@ public class Course {
 
 
     // constructors:
-    public Course(int courseNumber)    {
-        this.id = courseNumber;
-        counter++;
-    }
-
     public Course(String courseName)    {
         this.courseName = courseName;
         counter++;
     }
-
-    public Course(String courseName, int courseNumber)    {
-        this.id = courseNumber;
-        this.courseName = courseName;
-        counter++;
-    }
-
-    public Course(int courseNumber, String courseName)    {
-        this.id = courseNumber;
-        this.courseName = courseName;
-        counter++;
-    }
-
     public Course()    {
         counter++;
     }
-
 
     //getters & setters:
     public static int getCounter() { return counter; }

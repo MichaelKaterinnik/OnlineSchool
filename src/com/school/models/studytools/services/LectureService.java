@@ -2,6 +2,7 @@ package com.school.models.studytools.services;
 
 import com.school.models.studytools.Lecture;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class LectureService {
@@ -39,6 +40,15 @@ public class LectureService {
             }
         }
         LectureRepo.saveLecture(newLecture);
+    }
+
+    public static void showLectures()  {
+        Lecture[] result = Arrays.copyOf(LectureRepo.getLecturesRepository(), LectureRepo.getLecturesRepository().length);
+        for (Lecture lecture : result) {
+            if (lecture != null) {
+                System.out.println("ID наявної лекції: " + lecture.getId());
+            }
+        }
     }
 
 }

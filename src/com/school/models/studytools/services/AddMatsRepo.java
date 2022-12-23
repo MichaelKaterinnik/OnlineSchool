@@ -8,6 +8,10 @@ public class AddMatsRepo {
     private static AdditionalMaterials[] addMatsRepository = new AdditionalMaterials[capacity];
 
 
+    public static AdditionalMaterials[] getAddMatsRepository() {
+        return addMatsRepository;
+    }
+
     public static void saveAdditionalMaterial(AdditionalMaterials newMaterial) {
         if (size == capacity) {
             grow();

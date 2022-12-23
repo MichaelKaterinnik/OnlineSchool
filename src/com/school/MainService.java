@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class MainService {
     private final static String CATEGORY_CHANGER = "Оберіть категорію:\n1 - курс\n2 - вчителі\n3 - студенти\n4 - лекції\n" +
-            "Введіть потрібне число з 4-х або введіть exit щоб вийти з програми";
+            "5 - переглянути створені об'єкти\nВведіть потрібне число з 5-ти або введіть exit щоб вийти з програми";
     private final static String CATEGORY_COURSE = "Ви знаходитесь у категорії вибору курсу. Чи бажаєте Ви додати новий курс?\nВведіть число 1, якщо так:";
     private final static String CATEGORY_TEACHER = "Ви знаходитесь у категорії вибору вчителів. Чи бажаєте Ви додати нового вчителя?\nВведіть число 1, якщо так:";
     private final static String CATEGORY_STUDENT = "Ви знаходитесь у категорії вибору студентів. Чи бажаєте Ви додати нового студента?\nВведіть число 1, якщо так:";
@@ -21,6 +21,9 @@ public class MainService {
             "число 1, якщо так:";
     private final static String CHANGER_EXCEPTION = "Введіть одне з запитуваних чисел, будь-ласка";
 
+    private MainService() {
+
+    }
 
     public static String getCourseChangerString() {
         return CATEGORY_CHANGER;
@@ -46,6 +49,17 @@ public class MainService {
         return CHANGER_EXCEPTION;
     }
 
+    public static void initializer()    {
+        System.out.println("Розпочалася робота програми. Необхідно створити один курс та до нього 3 лекції");
+        CourseService courseService = new CourseService();
+        courseService.createCourseByTerminal();
+        System.out.println("Початковий курс створено. Тепер додамо до нього 3 лекції");
+        LectureService lectureService = new LectureService();
+        lectureService.createLectureByTerminal();
+        lectureService.createLectureByTerminal();
+        lectureService.createLectureByTerminal();
+    }
+
     public static void categoryChanger() {
         Scanner console = new Scanner(System.in);
         while (true) {
@@ -69,6 +83,9 @@ public class MainService {
                             System.out.println("Роботу програми закінчено - створено 8 лекцій");
                             return;
                         }
+                    }
+                    case 5 -> {
+                        showObjects();
                     }
                     default -> {
                         continue;
@@ -125,8 +142,29 @@ public class MainService {
         }
     }
 
-    private MainService() {
-
+    private static void showObjects()   {
+        System.out.println("Оберіть категорію, яку бажаєте переглянути:\n" +
+                "1 - курси\n" +
+                "2 - лекції\n" +
+                "3 - вичтелі\n" +
+                "4 - студенти");
+        Scanner console = new Scanner(System.in);
+        int category = console.nextInt();
+        switch (category)   {
+            case 1 -> {
+                CourseService.showCourses();
+            }
+            case 2 -> {
+                LectureService.showLectures();
+            }
+            case 3 -> {
+                TeacherService.showTeachers();
+            }
+            case 4 -> {
+                StudentService.showStudents();
+            }
+        }
     }
+
 }
 

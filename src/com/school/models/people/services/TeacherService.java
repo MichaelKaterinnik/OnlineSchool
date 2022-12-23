@@ -4,6 +4,7 @@ import com.school.models.people.Teacher;
 import com.school.models.studytools.Lecture;
 import com.school.models.studytools.services.LectureService;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class TeacherService {
@@ -59,4 +60,10 @@ public class TeacherService {
         TeacherRepo.saveTeacher(newTeacher);
     }
 
+    public static void showTeachers()  {
+        Teacher[] result = Arrays.copyOf(TeacherRepo.getTeachersRepository(), TeacherRepo.getTeachersRepository().length);
+        for (Teacher teacher : result) {
+            System.out.println("ID наявного у базі вчителя: " + teacher.getId());
+        }
+    }
 }

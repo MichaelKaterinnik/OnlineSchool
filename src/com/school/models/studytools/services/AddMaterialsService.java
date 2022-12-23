@@ -2,6 +2,7 @@ package com.school.models.studytools.services;
 
 import com.school.models.studytools.AdditionalMaterials;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class AddMaterialsService {
@@ -9,7 +10,6 @@ public class AddMaterialsService {
     private static final String ENTER_LECTURE_NUMBER = "Введіть лекцію (ID лекції), до якої належатиме матеріал";
     private static final String ENTER_AM_NAME_EXCEPTION = "Введіть тему матеріалу українською мовою,будь-ласка";
     private static final String ENTER_LECTURE_NUMBER_EXCEPTION = "Введіть номер існуючої лекції (ID), до якої належатиме матеріал";
-
 
 
     public AdditionalMaterials createAdditionalMaterials()  {
@@ -42,4 +42,10 @@ public class AddMaterialsService {
         AddMatsRepo.saveAdditionalMaterial(newAddMaterials);
     }
 
+    public static void showAddMaterials()  {
+        AdditionalMaterials[] result = Arrays.copyOf(AddMatsRepo.getAddMatsRepository(), AddMatsRepo.getAddMatsRepository().length);
+        for (AdditionalMaterials additionalMaterials : result) {
+            System.out.println("ID наявних додаткових матеріалів: " + additionalMaterials.getId());
+        }
+    }
 }

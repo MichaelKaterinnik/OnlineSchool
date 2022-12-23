@@ -8,6 +8,10 @@ public class LectureRepo {
     private static Lecture[] lecturesRepository = new Lecture[capacity];
 
 
+    public static Lecture[] getLecturesRepository() {
+        return lecturesRepository;
+    }
+
     public static void saveLecture(Lecture newLecture) {
         if (size == capacity) {
             grow();

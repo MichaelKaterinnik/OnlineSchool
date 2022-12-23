@@ -3,6 +3,7 @@ package com.school.models.people.services;
 import com.school.models.people.Student;
 import com.school.models.people.Teacher;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class StudentService {
@@ -61,4 +62,10 @@ public class StudentService {
         StudentRepo.saveStudent(newStudent);
     }
 
+    public static void showStudents()  {
+        Student[] result = Arrays.copyOf(StudentRepo.getStudentsRepository(), StudentRepo.getStudentsRepository().length);
+        for (Student student : result)  {
+            System.out.println("ID наявного у базі студента: " + student.getId());
+        }
+    }
 }

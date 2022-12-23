@@ -8,6 +8,10 @@ public class HomeworkRepo {
     private static Homework[] homeworkRepository = new Homework[capacity];
 
 
+    public static Homework[] getHomeworkRepository() {
+        return homeworkRepository;
+    }
+
     public static void saveHomework(Homework newHomework) {
         if (size == capacity) {
             grow();

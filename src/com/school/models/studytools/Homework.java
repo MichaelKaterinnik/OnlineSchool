@@ -2,7 +2,7 @@ package com.school.models.studytools;
 
 public class Homework {
     private static int counter = 0;
-    private int id;
+    private int id = counter;
     private int homeworkMark;
     private String homeworkTask;
     private int lectureID;

@@ -3,6 +3,7 @@ package com.school.models.studytools.services;
 import com.school.models.studytools.Homework;
 import com.school.models.studytools.Lecture;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class HomeworkService {
@@ -40,5 +41,12 @@ public class HomeworkService {
             }
         }
         HomeworkRepo.saveHomework(newHomework);
+    }
+
+    public static void showHomeworks() {
+        Homework[] result = Arrays.copyOf(HomeworkRepo.getHomeworkRepository(), HomeworkRepo.getHomeworkRepository().length);
+        for (Homework homework : result) {
+            System.out.println("ID наявного ДЗ: " + homework.getID());
+        }
     }
 }

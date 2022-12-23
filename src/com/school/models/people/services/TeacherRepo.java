@@ -8,6 +8,10 @@ public class TeacherRepo {
     private static Teacher[] teachersRepository = new Teacher[capacity];
 
 
+    public static Teacher[] getTeachersRepository() {
+        return teachersRepository;
+    }
+
     public static void saveTeacher(Teacher newTeacher) {
         if (size == capacity) {
             grow();

@@ -9,6 +9,10 @@ public class StudentRepo {
     private static Student[] studentsRepository = new Student[capacity];
 
 
+    public static Student[] getStudentsRepository() {
+        return studentsRepository;
+    }
+
     public static void saveStudent(Student newStudent) {
         if (size == capacity) {
             grow();

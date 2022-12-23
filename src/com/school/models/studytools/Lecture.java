@@ -2,7 +2,7 @@ package com.school.models.studytools;
 
 public class Lecture {
     private static int counter = 0;
-    private int id;
+    private int id = counter;
     private int CourseID;
     private String lectureTopic;
     Homework homework;
@@ -10,21 +10,7 @@ public class Lecture {
 
 
     //constructors:
-    public Lecture(int id) {
-        this.id = id;
-        counter++;
-    }
-    public Lecture(int id, String topic) {
-        this.id = id;
-        counter++;
-    }
-    public Lecture(String topic, int id) {
-        this.id = id;
-        this.lectureTopic = topic;
-        counter++;
-    }
     public Lecture(String topic) {
-        this.lectureTopic = topic;
         counter++;
     }
     public Lecture(String topic, AdditionalMaterials addMaterial, Homework homework)   {

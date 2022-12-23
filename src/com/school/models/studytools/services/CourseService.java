@@ -2,6 +2,7 @@ package com.school.models.studytools.services;
 
 import com.school.models.studytools.Course;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class CourseService {
@@ -12,14 +13,8 @@ public class CourseService {
     public Course createCourse()    {
         return new Course();
     }
-    public Course createCourse(int id) {
-        return new Course(id);
-    }
-    public Course createCourse(String courseName, int courseNumber) {
-        return new Course(courseName, courseNumber);
-    }
-    public Course createCourse(int courseNumber, String courseName) {
-        return new Course(courseName, courseNumber);
+    public Course createCourse(String courseName) {
+        return new Course(courseName);
     }
 
 
@@ -41,4 +36,10 @@ public class CourseService {
         CourseRepo.saveCourse(newCourse);
     }
 
+    public static void showCourses()   {
+        Course[] result = Arrays.copyOf(CourseRepo.getCoursesRepository(), CourseRepo.getCoursesRepository().length);
+        for (Course course : result) {
+            System.out.println("ID наявного курсу: " + course.getID());
+        }
+    }
 }
