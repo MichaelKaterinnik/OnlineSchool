@@ -2,7 +2,7 @@ package com.school.models.studytools;
 
 public class AdditionalMaterials {
     private static int counter = 0;
-    private int id = counter;
+    private int id;
     private String topic;
     private int lectureID;
 
@@ -10,7 +10,8 @@ public class AdditionalMaterials {
 
     // constructors:
     public AdditionalMaterials()   {
-        counter++;
+        ++counter;
+        this.id = counter;
     }
 
 

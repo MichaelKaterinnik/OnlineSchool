@@ -2,7 +2,7 @@ package com.school.models.studytools;
 
 public class Homework {
     private static int counter = 0;
-    private int id = counter;
+    private int id;
     private int homeworkMark;
     private String homeworkTask;
     private int lectureID;
@@ -10,7 +10,8 @@ public class Homework {
 
     // constructors:
     public Homework()  {
-        counter++;
+        ++counter;
+        this.id = counter;
     }
 
 
