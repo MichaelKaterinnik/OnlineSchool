@@ -1,7 +1,6 @@
 package com.school.models.studytools.services;
 
 import com.school.models.studytools.Homework;
-import com.school.models.studytools.Lecture;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -40,7 +39,7 @@ public class HomeworkService {
                 System.out.println(ENTER_LECTURE_NUMBER_EXCEPTION);
             }
         }
-        HomeworkRepo.saveHomework(newHomework);
+        HomeworkRepo.add(newHomework);
     }
 
     public static void showHomeworks() {

@@ -1,8 +1,6 @@
 package com.school.models.people.services;
 
 import com.school.models.people.Teacher;
-import com.school.models.studytools.Lecture;
-import com.school.models.studytools.services.LectureService;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -57,7 +55,7 @@ public class TeacherService {
                 System.out.println(ENTER_ID_EXCEPTION);
             }
         }
-        TeacherRepo.saveTeacher(newTeacher);
+        TeacherRepo.add(newTeacher);
     }
 
     public static void showTeachers()  {

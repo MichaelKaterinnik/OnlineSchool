@@ -39,7 +39,7 @@ public class AddMaterialsService {
                 System.out.println(ENTER_LECTURE_NUMBER_EXCEPTION);
             }
         }
-        AddMatsRepo.saveAdditionalMaterial(newAddMaterials);
+        AddMatsRepo.add(newAddMaterials);
     }
 
     public static void showAddMaterials()  {
