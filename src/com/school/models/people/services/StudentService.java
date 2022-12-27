@@ -1,7 +1,6 @@
 package com.school.models.people.services;
 
 import com.school.models.people.Student;
-import com.school.models.people.Teacher;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -59,7 +58,7 @@ public class StudentService {
             }
         }
         System.out.println();
-        StudentRepo.saveStudent(newStudent);
+        StudentRepo.add(newStudent);
     }
 
     public static void showStudents()  {

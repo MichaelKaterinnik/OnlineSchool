@@ -1,6 +1,8 @@
 package com.school.models.studytools;
 
-public class AdditionalMaterials {
+import com.school.models.Superclass;
+
+public class AdditionalMaterials extends Superclass {
     private static int counter = 0;
     private int id;
     private String topic;
@@ -16,7 +18,7 @@ public class AdditionalMaterials {
 
 
     // getters & setters:
-    public int getCounter() { return counter; }
+    public static int getCounter() { return counter; }
 
     public void setId(int id)   { this.id = id; }
     public int getId() {

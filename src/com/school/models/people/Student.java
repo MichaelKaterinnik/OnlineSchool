@@ -1,6 +1,8 @@
 package com.school.models.people;
 
-public class Student {
+import com.school.models.Superclass;
+
+public class Student extends Superclass {
     private static int counter = 0;
     private int id;
     private String studentFirstName;
@@ -14,13 +16,11 @@ public class Student {
         ++counter;
         this.id = counter;
     }
-
     public Student(String secondName)    {
         this.studentSecondName = secondName;
         ++counter;
         this.id = counter;
     }
-
     public Student()    {
         ++counter;
         this.id = counter;

@@ -1,6 +1,8 @@
 package com.school.models.people;
 
-public class Teacher {
+import com.school.models.Superclass;
+
+public class Teacher extends Superclass {
     private static int counter = 0;
     private int id;
     private String teacherFirstName;

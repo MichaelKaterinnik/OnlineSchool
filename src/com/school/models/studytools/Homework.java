@@ -1,6 +1,8 @@
 package com.school.models.studytools;
 
-public class Homework {
+import com.school.models.Superclass;
+
+public class Homework extends Superclass {
     private static int counter = 0;
     private int id;
     private int homeworkMark;
@@ -16,7 +18,7 @@ public class Homework {
 
 
     // getters & setters:
-    public int getCounter() { return counter; }
+    public static  int getCounter() { return counter; }
     public void setID(int id)   { this.id = id; }
     public int getID()  { return id; }
     public void setHomeworkMark(int id) { this.homeworkMark = homeworkMark; }

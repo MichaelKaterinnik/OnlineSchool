@@ -1,9 +1,9 @@
 package com.school.models.people.services;
 
+import com.school.models.SuperRepo;
 import com.school.models.people.Student;
-import com.school.models.people.Teacher;
 
-public class StudentRepo {
+public class StudentRepo extends SuperRepo {
     private static int size = 0;
     private static int capacity = 10;
     private static Student[] studentsRepository = new Student[capacity];
@@ -13,12 +13,40 @@ public class StudentRepo {
         return studentsRepository;
     }
 
-    public static void saveStudent(Student newStudent) {
+    public static void add(Student newStudent) {
         if (size == capacity) {
             grow();
         }
         studentsRepository[size] = newStudent;
         size++;
+    }
+
+    public static Student getById(int id)    {
+        for (Student student : studentsRepository) {
+            if (student.getId() == id) {
+                return student;
+            }
+        }
+        return null;
+    }
+
+    public static void deleteById(int id)   {
+        for (int i = 0; i < studentsRepository.length; i++)    {
+            if (studentsRepository[i] != null && studentsRepository[i].getId() == id)   {
+                studentsRepository[i] = null;
+            }
+        }
+        int k = 0;
+        for (int i = 0; i < studentsRepository.length; i++) {
+            if (studentsRepository[i] == null) {
+                k = i;
+                while (k < studentsRepository.length - 1) {
+                    studentsRepository[k] = studentsRepository[k + 1];
+                    k++;
+                }
+            }
+        }
+        size--;
     }
 
     private static void grow() {

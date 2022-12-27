@@ -33,7 +33,7 @@ public class CourseService {
                 continue;
             }
         }
-        CourseRepo.saveCourse(newCourse);
+        CourseRepo.add(newCourse);
     }
 
     public static void showCourses()   {
