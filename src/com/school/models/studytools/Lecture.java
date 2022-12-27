@@ -48,7 +48,7 @@ public class Lecture extends Superclass {
     public void setId(int id) { this.id = id; }
     public int getId() { return id; }
     public void setCourseID(int courseID) {
-        CourseID = courseID;
+        this.CourseID = courseID;
     }
     public int getCourseID() {
         return CourseID;
