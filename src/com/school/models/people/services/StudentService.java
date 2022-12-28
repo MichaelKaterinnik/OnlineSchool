@@ -11,7 +11,6 @@ public class StudentService {
     private static final String ENTER_ID = "Введіть унікальний номер (ID) студента";
     private static final String ENTER_NAME_EXCEPTION = "Введіть ім'я студента українською мовою,будь-ласка";
     private static final String ENTER_SNAME_EXCEPTION = "Введіть прізвище студента українською мовою,будь-ласка";
-
     private static final String ENTER_ID_EXCEPTION = "Введіть ID студента, будь-ласка";
 
 
@@ -28,7 +27,7 @@ public class StudentService {
         Student newStudent = studentService.createStudent();
         System.out.println(ENTER_STUDENT_FIRST_NAME);
         while (true) {
-            if (console.hasNextLine())  {
+            if (console.hasNext("[а-я]+"))  {
                 newStudent.setStudentFirstName(console.nextLine());
                 break;
             } else {
@@ -37,14 +36,14 @@ public class StudentService {
         }
         System.out.println(ENTER_STUDENT_SECOND_NAME);
         while (true) {
-            if (console.hasNextLine())  {
+            if (console.hasNext("[а-я]+"))  {
                 newStudent.setStudentSecondName(console.nextLine());
                 break;
             } else {
                 System.out.println(ENTER_SNAME_EXCEPTION);
             }
         }
-        System.out.printf("Додано студента %s %s", newStudent.getStudentFirstName(), newStudent.getStudentSecondName());
+        System.out.printf("Додано студента " + newStudent.getStudentFirstName() + " " + newStudent.getStudentSecondName());
         System.out.println();
         System.out.println(ENTER_ID);
         while (true) {
@@ -57,7 +56,6 @@ public class StudentService {
                 System.out.println(ENTER_ID_EXCEPTION);
             }
         }
-        System.out.println();
         StudentRepo.add(newStudent);
     }
 

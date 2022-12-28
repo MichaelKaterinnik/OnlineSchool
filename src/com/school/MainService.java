@@ -12,19 +12,21 @@ import com.school.models.studytools.services.LectureService;
 import java.util.Scanner;
 
 public class MainService {
-    private final static String CATEGORY_CHANGER = "Оберіть категорію:\n1 - курс\n2 - вчителі\n3 - студенти\n4 - лекції\n" +
-            "5 - переглянути створені об'єкти\nВведіть потрібне число з 5-ти або введіть exit щоб вийти з програми";
+    // поля:
+    private final static String CATEGORY_CHANGER = """
+    Оберіть категорію:\n1 - курс\n2 - вчителі\n3 - студенти\n4 - лекції\n5 - переглянути створені об'єкти\nВведіть потрібне число з 5-ти або введіть exit щоб вийти з програми""";
     private final static String CATEGORY_COURSE = "Ви знаходитесь у категорії вибору курсу. Чи бажаєте Ви додати новий курс?\nВведіть число 1, якщо так:";
     private final static String CATEGORY_TEACHER = "Ви знаходитесь у категорії вибору вчителів. Чи бажаєте Ви додати нового вчителя?\nВведіть число 1, якщо так:";
     private final static String CATEGORY_STUDENT = "Ви знаходитесь у категорії вибору студентів. Чи бажаєте Ви додати нового студента?\nВведіть число 1, якщо так:";
-    private final static String CATEGORY_LECTURE = "Ви знаходитесь у категорії вибору лекцій. Чи бажаєте Ви додати нову лекцію?\nВведіть " +
-            "число 1, якщо так:";
+    private final static String CATEGORY_LECTURE = "Ви знаходитесь у категорії вибору лекцій. Чи бажаєте Ви додати нову лекцію?\nВведіть число 1, якщо так:";
     private final static String CHANGER_EXCEPTION = "Введіть одне з запитуваних чисел, будь-ласка";
 
+    // конструктор:
     private MainService() {
 
     }
 
+    // методи:
     public static String getCourseChangerString() {
         return CATEGORY_CHANGER;
     }
@@ -67,15 +69,9 @@ public class MainService {
             if (console.hasNextInt()) {
                 int category = console.nextInt();
                 switch (category) {
-                    case 1 -> {
-                        courseCase();
-                    }
-                    case 2 -> {
-                        teacherCase();
-                    }
-                    case 3 -> {
-                        studentCase();
-                    }
+                    case 1 -> courseCase();
+                    case 2 -> teacherCase();
+                    case 3 -> studentCase();
                     case 4 -> {
                         lectureCase();
                         if (Lecture.getCounter() == 8) {
@@ -84,20 +80,12 @@ public class MainService {
                             return;
                         }
                     }
-                    case 5 -> {
-                        showObjects();
-                    }
-                    default -> {
-                        continue;
-                    }
+                    case 5 -> showObjects();
                 }
             } else if (console.hasNextLine() && console.nextLine().equalsIgnoreCase("exit")) {
-                System.out.println("роботу метода CategoryChanger закінчено");
+                System.out.println("Роботу програми закінчено");
                 console.close();
                 return;
-            } else {
-                System.out.println();
-                continue;
             }
         }
     }
@@ -151,18 +139,10 @@ public class MainService {
         Scanner console = new Scanner(System.in);
         int category = console.nextInt();
         switch (category)   {
-            case 1 -> {
-                CourseService.showCourses();
-            }
-            case 2 -> {
-                LectureService.showLectures();
-            }
-            case 3 -> {
-                TeacherService.showTeachers();
-            }
-            case 4 -> {
-                StudentService.showStudents();
-            }
+            case 1 -> CourseService.showCourses();
+            case 2 -> LectureService.showLectures();
+            case 3 -> TeacherService.showTeachers();
+            case 4 -> StudentService.showStudents();
         }
     }
 

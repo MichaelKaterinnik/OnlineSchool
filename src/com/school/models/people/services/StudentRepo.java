@@ -4,7 +4,7 @@ import com.school.models.SuperRepo;
 import com.school.models.people.Student;
 
 public class StudentRepo extends SuperRepo {
-    private static int size = 0;
+    private static int index = 0;
     private static int capacity = 10;
     private static Student[] studentsRepository = new Student[capacity];
 
@@ -14,11 +14,11 @@ public class StudentRepo extends SuperRepo {
     }
 
     public static void add(Student newStudent) {
-        if (size == capacity) {
+        if (index == capacity) {
             grow();
         }
-        studentsRepository[size] = newStudent;
-        size++;
+        studentsRepository[index] = newStudent;
+        index++;
     }
 
     public static Student getById(int id)    {
@@ -31,30 +31,27 @@ public class StudentRepo extends SuperRepo {
     }
 
     public static void deleteById(int id)   {
+        int index = 0;
         for (int i = 0; i < studentsRepository.length; i++)    {
             if (studentsRepository[i] != null && studentsRepository[i].getId() == id)   {
                 studentsRepository[i] = null;
             }
+            index = i;
         }
-        int k = 0;
-        for (int i = 0; i < studentsRepository.length; i++) {
-            if (studentsRepository[i] == null) {
-                k = i;
-                while (k < studentsRepository.length - 1) {
-                    studentsRepository[k] = studentsRepository[k + 1];
-                    k++;
-                }
+        if (index < studentsRepository.length - 1) {
+            while (index < studentsRepository.length - 1) {
+                studentsRepository[index] = studentsRepository[index + 1];
+                index++;
             }
+            studentsRepository[studentsRepository.length - 1] = null;
         }
-        size--;
+        StudentRepo.index--;
     }
 
     private static void grow() {
-        capacity = (int) (capacity * 3) / 2 + 1;
+        capacity = (capacity * 3) / 2 + 1;
         Student[] newRepository = new Student[capacity];
-        for (int i = 0; i < studentsRepository.length; i++) {
-            newRepository[i] = studentsRepository[i];
-        }
+        System.arraycopy(studentsRepository, 0, newRepository, 0, studentsRepository.length);
         studentsRepository = newRepository;
     }
 }

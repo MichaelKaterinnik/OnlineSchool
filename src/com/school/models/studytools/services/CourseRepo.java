@@ -4,21 +4,20 @@ import com.school.models.SuperRepo;
 import com.school.models.studytools.Course;
 
 public class CourseRepo extends SuperRepo {
-    private static int size = 0;
+    private static int index = 0;
     private static int capacity = 10;
     private static Course[] coursesRepository = new Course[capacity];
-
 
     public static Course[] getCoursesRepository() {
         return coursesRepository;
     }
 
     public static void add(Course newCourse) {
-        if (size == capacity) {
+        if (index == capacity) {
             grow();
         }
-        coursesRepository[size] = newCourse;
-        size++;
+        coursesRepository[index] = newCourse;
+        index++;
     }
 
     public static Course getById(int id)    {
@@ -31,30 +30,27 @@ public class CourseRepo extends SuperRepo {
     }
 
     public static void deleteById(int id)   {
+        int index = 0;
         for (int i = 0; i < coursesRepository.length; i++)    {
             if (coursesRepository[i] != null && coursesRepository[i].getId() == id)   {
                 coursesRepository[i] = null;
             }
+            index = i;
         }
-        int k = 0;
-        for (int i = 0; i < coursesRepository.length; i++) {
-            if (coursesRepository[i] == null) {
-                k = i;
-                while (k < coursesRepository.length - 1) {
-                    coursesRepository[k] = coursesRepository[k + 1];
-                    k++;
-                }
+        if (index < coursesRepository.length - 1) {
+            while (index < coursesRepository.length - 1) {
+                coursesRepository[index] = coursesRepository[index + 1];
+                index++;
             }
+            coursesRepository[coursesRepository.length - 1] = null;
         }
-        size--;
+        CourseRepo.index--;
     }
 
     private static void grow() {
-        capacity = (int) (capacity * 3) / 2 + 1;
+        capacity = (capacity * 3) / 2 + 1;
         Course[] newCoursesRepository = new Course[capacity];
-        for (int i = 0; i < coursesRepository.length; i++) {
-            newCoursesRepository[i] = coursesRepository[i];
-        }
+        System.arraycopy(coursesRepository, 0, newCoursesRepository, 0, coursesRepository.length);
         coursesRepository = newCoursesRepository;
     }
 }

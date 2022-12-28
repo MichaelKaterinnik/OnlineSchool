@@ -45,7 +45,6 @@ public class Lecture extends Superclass {
 
     // getters & setters:
     public static int getCounter() { return counter; }
-    public void setId(int id) { this.id = id; }
     public int getId() { return id; }
     public void setCourseID(int courseID) {
         this.CourseID = courseID;

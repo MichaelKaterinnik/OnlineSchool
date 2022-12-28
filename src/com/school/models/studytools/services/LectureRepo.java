@@ -3,10 +3,9 @@ package com.school.models.studytools.services;
 import com.school.models.SuperRepo;
 import com.school.models.studytools.Lecture;
 
-import java.util.Arrays;
 
 public class LectureRepo extends SuperRepo {
-    private static int size = 0;
+    private static int index = 0;
     private static int capacity = 10;
     private static Lecture[] lecturesRepository = new Lecture[capacity];
 
@@ -15,11 +14,11 @@ public class LectureRepo extends SuperRepo {
     }
 
     public static void add(Lecture newLecture) {
-        if (size == capacity) {
+        if (index == capacity) {
             grow();
         }
-        lecturesRepository[size] = newLecture;
-        size++;
+        lecturesRepository[index] = newLecture;
+        index++;
     }
 
     public static Lecture getById(int id)    {
@@ -32,30 +31,27 @@ public class LectureRepo extends SuperRepo {
     }
 
     public static void deleteById(int id)   {
+        int index = 0;
         for (int i = 0; i < lecturesRepository.length; i++)    {
             if (lecturesRepository[i] != null && lecturesRepository[i].getId() == id)   {
                 lecturesRepository[i] = null;
             }
+            index = i;
         }
-        int k;
-        for (int i = 0; i < lecturesRepository.length; i++) {
-            if (lecturesRepository[i] == null) {
-                k = i;
-                while (k < lecturesRepository.length - 1) {
-                    lecturesRepository[k] = lecturesRepository[k + 1];
-                    k++;
-                }
+        if (index < lecturesRepository.length - 1) {
+            while (index < lecturesRepository.length - 1) {
+                lecturesRepository[index] = lecturesRepository[index + 1];
+                index++;
             }
+            lecturesRepository[lecturesRepository.length - 1] = null;
         }
-        size--;
+        LectureRepo.index--;
     }
 
     private static void grow() {
-        capacity = (int) (capacity * 3) / 2 + 1;
+        capacity = (capacity * 3) / 2 + 1;
         Lecture[] newLecturesRepository = new Lecture[capacity];
-        for (int i = 0; i < lecturesRepository.length; i++) {
-            newLecturesRepository[i] = lecturesRepository[i];
-        }
+        System.arraycopy(lecturesRepository, 0, newLecturesRepository, 0, lecturesRepository.length);
         lecturesRepository = newLecturesRepository;
     }
 

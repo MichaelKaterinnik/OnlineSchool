@@ -12,7 +12,6 @@ public class Course extends Superclass {
     private Student student;
     private Lecture lecture;
 
-
     // constructors:
     public Course(String courseName)    {
         this.courseName = courseName;
@@ -26,9 +25,6 @@ public class Course extends Superclass {
 
     //getters & setters:
     public static int getCounter() { return counter; }
-    public void setID(int id)   {
-        this.id = id;
-    }
     public int getID()  { return id; }
     public void setCourseName(String courseName) { this.courseName = courseName; }
     public String getCourseName() { return courseName; }

@@ -30,7 +30,6 @@ public class Student extends Superclass {
     //getters & setters:
     public static int getCounter() { return counter; }
 
-    public void setId(int id) { this.id = id; }
     public int getId() { return id; }
 
     public void setStudentFirstName(String studentFirstName) { this.studentFirstName = studentFirstName; }

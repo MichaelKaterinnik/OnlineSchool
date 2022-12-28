@@ -4,21 +4,20 @@ import com.school.models.SuperRepo;
 import com.school.models.studytools.Homework;
 
 public class HomeworkRepo extends SuperRepo {
-    private static int size = 0;
+    private static int index = 0;
     private static int capacity = 10;
     private static Homework[] homeworkRepository = new Homework[capacity];
-
 
     public static Homework[] getHomeworkRepository() {
         return homeworkRepository;
     }
 
     public static void add(Homework newHomework) {
-        if (size == capacity) {
+        if (index == capacity) {
             grow();
         }
-        homeworkRepository[size] = newHomework;
-        size++;
+        homeworkRepository[index] = newHomework;
+        index++;
     }
 
     public static Homework getById(int id)    {
@@ -31,30 +30,27 @@ public class HomeworkRepo extends SuperRepo {
     }
 
     public static void deleteById(int id)   {
+        int index = 0;
         for (int i = 0; i < homeworkRepository.length; i++)    {
             if (homeworkRepository[i] != null && homeworkRepository[i].getId() == id)   {
                 homeworkRepository[i] = null;
             }
+            index = i;
         }
-        int k;
-        for (int i = 0; i < homeworkRepository.length; i++) {
-            if (homeworkRepository[i] == null) {
-                k = i;
-                while (k < homeworkRepository.length - 1) {
-                    homeworkRepository[k] = homeworkRepository[k + 1];
-                    k++;
-                }
+        if (index < homeworkRepository.length - 1) {
+            while (index < homeworkRepository.length - 1) {
+                homeworkRepository[index] = homeworkRepository[index + 1];
+                index++;
             }
+            homeworkRepository[homeworkRepository.length - 1] = null;
         }
-        size--;
+        HomeworkRepo.index--;
     }
 
     private static void grow() {
-        capacity = (int) (capacity * 3) / 2 + 1;
+        capacity = (capacity * 3) / 2 + 1;
         Homework[] newHomeworkRepository = new Homework[capacity];
-        for (int i = 0; i < homeworkRepository.length; i++) {
-            newHomeworkRepository[i] = homeworkRepository[i];
-        }
+        System.arraycopy(homeworkRepository, 0, newHomeworkRepository, 0, homeworkRepository.length);
         homeworkRepository = newHomeworkRepository;
     }
 }

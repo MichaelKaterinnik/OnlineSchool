@@ -8,16 +8,15 @@ public class Teacher extends Superclass {
     private String teacherFirstName;
     private String teacherSecondName;
 
-
     // constructors:
-        public Teacher(String firstName, String secondName)    {
+    public Teacher(String firstName, String secondName) {
         this.teacherFirstName = firstName;
         this.teacherSecondName = secondName;
         ++counter;
         this.id = counter;
     }
 
-    public Teacher(String secondName)    {
+    public Teacher(String secondName) {
         this.teacherSecondName = secondName;
         ++counter;
         this.id = counter;
@@ -28,11 +27,9 @@ public class Teacher extends Superclass {
         this.id = counter;
     }
 
-
     // getters & setters:
     public static int getCounter() { return counter; }
 
-    public void setId(int id)   { this.id = id; }
     public int getId()  { return id; }
 
     public void setTeacherFirstName(String firstName)   { this.teacherFirstName = firstName; }

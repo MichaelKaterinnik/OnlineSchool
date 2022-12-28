@@ -21,7 +21,7 @@ public class Homework extends Superclass {
     public static  int getCounter() { return counter; }
     public void setID(int id)   { this.id = id; }
     public int getID()  { return id; }
-    public void setHomeworkMark(int id) { this.homeworkMark = homeworkMark; }
+    public void setHomeworkMark(int homeworkMark) { this.homeworkMark = homeworkMark; }
     public int setHomeworkMark()    { return homeworkMark; }
     public void setHomeworkTask(String homeworkTask) {
         this.homeworkTask = homeworkTask;

@@ -11,7 +11,6 @@ public class HomeworkService {
     private static final String ENTER_HW_NAME_EXCEPTION = "Введіть тему домашньгго завдання українською мовою,будь-ласка";
     private static final String ENTER_LECTURE_NUMBER_EXCEPTION = "Введіть номер існуючої лекції (ID), до якої належатиме домашнє завдання";
 
-
     public Homework createHomework()    {
         return new Homework();
     }

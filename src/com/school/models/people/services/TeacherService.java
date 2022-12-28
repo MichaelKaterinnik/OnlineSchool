@@ -11,7 +11,6 @@ public class TeacherService {
     private static final String ENTER_ID = "Введіть унікальний номер (ID) вчителя";
     private static final String ENTER_NAME_EXCEPTION = "Введіть ім'я українською мовою,будь-ласка";
     private static final String ENTER_SNAME_EXCEPTION = "Введіть прізвище українською мовою,будь-ласка";
-
     private static final String ENTER_ID_EXCEPTION = "Введіть ID вчителя, будь-ласка";
 
 
@@ -45,8 +44,9 @@ public class TeacherService {
             }
         }
         System.out.println("Додано вчителя " + newTeacher.getTeacherFirstName() + " " + newTeacher.getTeacherSecondName());
+        System.out.println();
+        System.out.println(ENTER_ID);
         while (true) {
-            System.out.println(ENTER_ID);
             if (console.hasNextInt())  {
                 newTeacher.setId(console.nextInt());
                 System.out.printf("Ви присвоїли вчителю %s %s ID під номером %d", newTeacher.getTeacherFirstName(), newTeacher.getTeacherSecondName(), newTeacher.getId());

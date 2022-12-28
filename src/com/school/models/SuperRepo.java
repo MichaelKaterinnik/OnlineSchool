@@ -2,7 +2,7 @@ package com.school.models;
 
 
 public class SuperRepo {
-    private static int size = 0;
+    private static int index = 0;
     private static int capacity = 10;
     private static Superclass[] repository = new Superclass[capacity];
 
@@ -12,11 +12,11 @@ public class SuperRepo {
     }
 
     public static void add(Superclass superclass)  {
-        if (size == capacity) {
+        if (index == capacity) {
             grow();
         }
-        repository[size] = superclass;
-        size++;
+        repository[index] = superclass;
+        index++;
     }
 
     public static Superclass getById(int id)    {
@@ -29,22 +29,21 @@ public class SuperRepo {
     }
 
     public static void deleteById(int id)   {
+        int index = 0;
         for (int i = 0; i < repository.length; i++)    {
             if (repository[i] != null && repository[i].getId() == id)   {
                 repository[i] = null;
             }
+            index = i;
         }
-        int k = 0;
-        for (int i = 0; i < repository.length; i++) {
-            if (repository[i] == null) {
-                k = i;
-                while (k < repository.length - 1) {
-                    repository[k] = repository[k + 1];
-                    k++;
-                }
+        if (index < repository.length - 1) {
+            while (index < repository.length - 1) {
+                repository[index] = repository[index + 1];
+                index++;
             }
+            repository[repository.length - 1] = null;
         }
-        size--;
+        SuperRepo.index--;
     }
 
     private static void grow() {

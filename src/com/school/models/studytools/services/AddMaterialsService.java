@@ -11,15 +11,14 @@ public class AddMaterialsService {
     private static final String ENTER_AM_NAME_EXCEPTION = "Введіть тему матеріалу українською мовою,будь-ласка";
     private static final String ENTER_LECTURE_NUMBER_EXCEPTION = "Введіть номер існуючої лекції (ID), до якої належатиме матеріал";
 
-
     public AdditionalMaterials createAdditionalMaterials()  {
         return new AdditionalMaterials();
     }
 
     public void createHomeworkByTerminal()    {
         Scanner console = new Scanner(System.in);
-        AddMaterialsService AddService = new AddMaterialsService();
-        AdditionalMaterials newAddMaterials = AddService.createAdditionalMaterials();
+        AddMaterialsService addService = new AddMaterialsService();
+        AdditionalMaterials newAddMaterials = addService.createAdditionalMaterials();
         System.out.println(ENTER_ADDMATERIALS_NAME);
         while (true) {
             if (console.hasNextLine())  {

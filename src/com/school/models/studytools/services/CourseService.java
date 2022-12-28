@@ -13,18 +13,18 @@ public class CourseService {
     public Course createCourse()    {
         return new Course();
     }
+
     public Course createCourse(String courseName) {
         return new Course(courseName);
     }
 
-
-        public void createCourseByTerminal()    {
+    public void createCourseByTerminal() {
         Scanner console = new Scanner(System.in);
         CourseService courseService = new CourseService();
         Course newCourse = courseService.createCourse();
         System.out.println(ENTER_COURSE_ID);
         while (true) {
-            if (console.hasNextInt())  {
+            if (console.hasNextInt()) {
                 newCourse.setID(console.nextInt());
                 System.out.println("Ви присвоїли створеному курсу ID №" + newCourse.getID());
                 break;
@@ -36,7 +36,7 @@ public class CourseService {
         CourseRepo.add(newCourse);
     }
 
-    public static void showCourses()   {
+    public static void showCourses() {
         Course[] result = Arrays.copyOf(CourseRepo.getCoursesRepository(), CourseRepo.getCoursesRepository().length);
         for (Course course : result) {
             System.out.println("ID наявного курсу: " + course.getID());
