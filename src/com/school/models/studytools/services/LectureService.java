@@ -38,7 +38,7 @@ public class LectureService {
                 System.out.println(ENTER_COURSE_NUMBER_EXCEPTION);
             }
         }
-        LectureRepo.add(newLecture);
+        LectureRepo.getInstance().add(newLecture);
     }
 
     public static void showLectures()  {

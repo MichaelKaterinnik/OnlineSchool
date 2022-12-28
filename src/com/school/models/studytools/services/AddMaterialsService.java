@@ -38,11 +38,11 @@ public class AddMaterialsService {
                 System.out.println(ENTER_LECTURE_NUMBER_EXCEPTION);
             }
         }
-        AddMatsRepo.add(newAddMaterials);
+        AddMatsRepo.getInstance().add(newAddMaterials);
     }
 
     public static void showAddMaterials()  {
-        AdditionalMaterials[] result = Arrays.copyOf(AddMatsRepo.getAddMatsRepository(), AddMatsRepo.getAddMatsRepository().length);
+        AdditionalMaterials[] result = Arrays.copyOf(AddMatsRepo.getAll(), AddMatsRepo.getAll().length);
         for (AdditionalMaterials additionalMaterials : result) {
             System.out.println("ID наявних додаткових матеріалів: " + additionalMaterials.getId());
         }

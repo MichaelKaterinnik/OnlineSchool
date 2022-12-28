@@ -38,11 +38,11 @@ public class HomeworkService {
                 System.out.println(ENTER_LECTURE_NUMBER_EXCEPTION);
             }
         }
-        HomeworkRepo.add(newHomework);
+        HomeworkRepo.getInstance().add(newHomework);
     }
 
     public static void showHomeworks() {
-        Homework[] result = Arrays.copyOf(HomeworkRepo.getHomeworkRepository(), HomeworkRepo.getHomeworkRepository().length);
+        Homework[] result = Arrays.copyOf(HomeworkRepo.getAll(), HomeworkRepo.getAll().length);
         for (Homework homework : result) {
             System.out.println("ID наявного ДЗ: " + homework.getID());
         }

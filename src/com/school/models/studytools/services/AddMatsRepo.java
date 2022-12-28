@@ -4,16 +4,27 @@ import com.school.models.SuperRepo;
 import com.school.models.studytools.AdditionalMaterials;
 
 public class AddMatsRepo extends SuperRepo {
-    private static int index = 0;
-    private static int capacity = 10;
-    private static AdditionalMaterials[] addMatsRepository = new AdditionalMaterials[capacity];
+    private int index = 0;
+    private int capacity = 10;
+    private AdditionalMaterials[] addMatsRepository = new AdditionalMaterials[capacity];
 
-
-    public static AdditionalMaterials[] getAddMatsRepository() {
-        return addMatsRepository;
+    private AddMatsRepo() {
     }
 
-    public static void add(AdditionalMaterials newMaterial) {
+    private static class AddMatsRepoHolder    {
+        public static final AddMatsRepo ADDITIONAL_MATERIALS_REPO_INSTANCE = new AddMatsRepo();
+    }
+
+    // methods:
+    public static AddMatsRepo getInstance() {
+        return AddMatsRepoHolder.ADDITIONAL_MATERIALS_REPO_INSTANCE;
+    }
+
+    public static AdditionalMaterials[] getAll() {
+        return AddMatsRepo.getInstance().addMatsRepository;
+    }
+
+    public void add(AdditionalMaterials newMaterial) {
         if (index == capacity) {
             grow();
         }
@@ -21,7 +32,7 @@ public class AddMatsRepo extends SuperRepo {
         index++;
     }
 
-    public static AdditionalMaterials getById(int id)    {
+    public AdditionalMaterials getById(int id)    {
         for (AdditionalMaterials add : addMatsRepository) {
             if (add.getId() == id) {
                 return add;
@@ -30,25 +41,25 @@ public class AddMatsRepo extends SuperRepo {
         return null;
     }
 
-    public static void deleteById(int id)   {
-        int index = 0;
+    public void deleteById(int id)   {
+        int pic = 0;
         for (int i = 0; i < addMatsRepository.length; i++)    {
             if (addMatsRepository[i] != null && addMatsRepository[i].getId() == id)   {
                 addMatsRepository[i] = null;
             }
-            index = i;
+            pic = i;
         }
-        if (index < addMatsRepository.length - 1) {
-            while (index < addMatsRepository.length - 1) {
-                addMatsRepository[index] = addMatsRepository[index + 1];
-                index++;
+        if (pic < addMatsRepository.length - 1) {
+            while (pic < addMatsRepository.length - 1) {
+                addMatsRepository[pic] = addMatsRepository[pic + 1];
+                pic++;
             }
             addMatsRepository[addMatsRepository.length - 1] = null;
         }
-        AddMatsRepo.index--;
+        AddMatsRepo.getInstance().index--;
     }
 
-    private static void grow() {
+    private void grow() {
         capacity = (capacity * 3) / 2 + 1;
         AdditionalMaterials[] newRepository = new AdditionalMaterials[capacity];
         System.arraycopy(addMatsRepository, 0, newRepository, 0, addMatsRepository.length);

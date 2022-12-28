@@ -8,10 +8,8 @@ import java.util.Scanner;
 public class StudentService {
     private static final String ENTER_STUDENT_FIRST_NAME = "Введіть ім'я студента українською мовою";
     private static final String ENTER_STUDENT_SECOND_NAME = "Введіть прізвище студента українською мовою";
-    private static final String ENTER_ID = "Введіть унікальний номер (ID) студента";
     private static final String ENTER_NAME_EXCEPTION = "Введіть ім'я студента українською мовою,будь-ласка";
     private static final String ENTER_SNAME_EXCEPTION = "Введіть прізвище студента українською мовою,будь-ласка";
-    private static final String ENTER_ID_EXCEPTION = "Введіть ID студента, будь-ласка";
 
 
     public Student createStudent(String firstName, String secondName)  {
@@ -45,22 +43,11 @@ public class StudentService {
         }
         System.out.printf("Додано студента " + newStudent.getStudentFirstName() + " " + newStudent.getStudentSecondName());
         System.out.println();
-        System.out.println(ENTER_ID);
-        while (true) {
-            if (console.hasNextInt())  {
-                newStudent.setId(console.nextInt());
-                System.out.printf("Ви присвоїли студенту %s %s ID під номером %d", newStudent.getStudentFirstName(), newStudent.getStudentSecondName(),
-                        newStudent.getId());
-                break;
-            } else {
-                System.out.println(ENTER_ID_EXCEPTION);
-            }
-        }
-        StudentRepo.add(newStudent);
+       StudentRepo.getInstance().add(newStudent);
     }
 
     public static void showStudents()  {
-        Student[] result = Arrays.copyOf(StudentRepo.getStudentsRepository(), StudentRepo.getStudentsRepository().length);
+        Student[] result = Arrays.copyOf(StudentRepo.getAll(), StudentRepo.getAll().length);
         for (Student student : result)  {
             System.out.println("ID наявного у базі студента: " + student.getId());
         }
