@@ -1,7 +1,7 @@
-package com.school.models.studytools.services;
+package com.school.models.repositories;
 
 import com.school.models.SuperRepo;
-import com.school.models.studytools.Lecture;
+import com.school.models.Lecture;
 
 
 public class LectureRepo extends SuperRepo {

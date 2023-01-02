@@ -1,15 +1,11 @@
-package com.school.models.studytools;
-
-import com.school.models.Superclass;
-import com.school.models.people.Student;
-import com.school.models.people.Teacher;
+package com.school.models;
 
 public class Course extends Superclass {
     private static int counter = 0;
     private int id;
     private String courseName;
-    private Teacher teacher;
-    private Student student;
+    private Person teacher;
+    private Person student;
     private Lecture lecture;
 
     // constructors:
@@ -28,22 +24,22 @@ public class Course extends Superclass {
     public int getID()  { return id; }
     public void setCourseName(String courseName) { this.courseName = courseName; }
     public String getCourseName() { return courseName; }
-    public Teacher getTeacher() {
-        return teacher;
-    }
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
-    }
-    public Student getStudent() {
-        return student;
-    }
-    public void setStudent(Student student) {
-        this.student = student;
-    }
     public Lecture getLecture() {
         return lecture;
     }
     public void setLecture(Lecture lecture) {
         this.lecture = lecture;
+    }
+    public Person getTeacher() {
+        return teacher;
+    }
+    public void setTeacher(Person teacher) {
+        this.teacher = teacher;    }
+
+    public Person getStudent() {
+        return student;
+    }
+    public void setStudent(Person student) {
+        this.student = student;
     }
 }

@@ -1,6 +1,7 @@
-package com.school.models.studytools.services;
+package com.school.models.services;
 
-import com.school.models.studytools.Lecture;
+import com.school.models.Lecture;
+import com.school.models.repositories.LectureRepo;
 
 import java.util.Arrays;
 import java.util.Scanner;

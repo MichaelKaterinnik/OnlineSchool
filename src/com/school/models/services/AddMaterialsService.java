@@ -1,6 +1,7 @@
-package com.school.models.studytools.services;
+package com.school.models.services;
 
-import com.school.models.studytools.AdditionalMaterials;
+import com.school.models.AdditionalMaterials;
+import com.school.models.repositories.AddMatsRepo;
 
 import java.util.Arrays;
 import java.util.Scanner;

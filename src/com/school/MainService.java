@@ -1,22 +1,22 @@
 package com.school;
 
-import com.school.models.people.Student;
-import com.school.models.people.Teacher;
-import com.school.models.people.services.StudentService;
-import com.school.models.people.services.TeacherService;
-import com.school.models.studytools.Course;
-import com.school.models.studytools.Lecture;
-import com.school.models.studytools.services.CourseService;
-import com.school.models.studytools.services.LectureService;
+import com.school.models.Person;
+import com.school.models.Role;
+import com.school.models.repositories.PersonRepo;
+import com.school.models.services.PersonService;
+import com.school.models.Course;
+import com.school.models.Lecture;
+import com.school.models.services.CourseService;
+import com.school.models.services.LectureService;
 
 import java.util.Scanner;
 
 public class MainService {
     // поля:
     private final static String CATEGORY_CHANGER = """
-    Оберіть категорію:\n1 - курс\n2 - вчителі\n3 - студенти\n4 - лекції\n5 - переглянути створені об'єкти\nВведіть потрібне число з 5-ти або введіть exit щоб вийти з програми""";
+    Оберіть категорію:\n1 - курс\n2 - викладачі\n3 - студенти\n4 - лекції\n5 - переглянути створені об'єкти\nВведіть потрібне число з 5-ти або введіть exit щоб вийти з програми""";
     private final static String CATEGORY_COURSE = "Ви знаходитесь у категорії вибору курсу. Чи бажаєте Ви додати новий курс?\nВведіть число 1, якщо так:";
-    private final static String CATEGORY_TEACHER = "Ви знаходитесь у категорії вибору вчителів. Чи бажаєте Ви додати нового вчителя?\nВведіть число 1, якщо так:";
+    private final static String CATEGORY_TEACHER = "Ви знаходитесь у категорії вибору викладачів. Чи бажаєте Ви додати нового викладача?\nВведіть число 1, якщо так:";
     private final static String CATEGORY_STUDENT = "Ви знаходитесь у категорії вибору студентів. Чи бажаєте Ви додати нового студента?\nВведіть число 1, якщо так:";
     private final static String CATEGORY_LECTURE = "Ви знаходитесь у категорії вибору лекцій. Чи бажаєте Ви додати нову лекцію?\nВведіть число 1, якщо так:";
     private final static String CHANGER_EXCEPTION = "Введіть одне з запитуваних чисел, будь-ласка";
@@ -30,23 +30,18 @@ public class MainService {
     public static String getCourseChangerString() {
         return CATEGORY_CHANGER;
     }
-
     public static String getCategoryCourseString() {
         return CATEGORY_COURSE;
     }
-
     public static String getCategoryTeacherString() {
         return CATEGORY_TEACHER;
     }
-
     public static String getCategoryStudentString() {
         return CATEGORY_STUDENT;
     }
-
     public static String getCategoryLectureString() {
         return CATEGORY_LECTURE;
     }
-
     public static String getChangerExceptionString() {
         return CHANGER_EXCEPTION;
     }
@@ -104,9 +99,15 @@ public class MainService {
         System.out.println(CATEGORY_TEACHER);
         Scanner console = new Scanner(System.in);
         if (console.hasNextInt() && console.nextInt() == 1) {
-            TeacherService teacherService = new TeacherService();
-            teacherService.createTeacherByTerminal();
-            System.out.println("Загальна кількість доданих вчителів: " + Teacher.getCounter());
+            PersonService personService = new PersonService();
+            personService.createTeacherByTerminal();
+            int counter = 0;
+            for (Person person : PersonRepo.getAll())   {
+                if (person.getRole() == Role.TEACHER)   {
+                    counter++;
+                }
+            }
+            System.out.println("Загальна кількість доданих викладачів: " + counter);
         }
     }
 
@@ -114,9 +115,15 @@ public class MainService {
         System.out.println(CATEGORY_STUDENT);
         Scanner console = new Scanner(System.in);
         if (console.hasNextInt() && console.nextInt() == 1) {
-            StudentService studentService = new StudentService();
-            studentService.createStudentByTerminal();
-            System.out.println("Загальна кількість доданих студентів: " + Student.getCounter());
+            PersonService personService = new PersonService();
+            personService.createStudentByTerminal();
+            int counter = 0;
+            for (Person person : PersonRepo.getAll())   {
+                if (person.getRole() == Role.STUDENT)   {
+                    counter++;
+                }
+            }
+            System.out.println("Загальна кількість доданих студентів: " + counter);
         }
     }
 
@@ -134,15 +141,15 @@ public class MainService {
         System.out.println("Оберіть категорію, яку бажаєте переглянути:\n" +
                 "1 - курси\n" +
                 "2 - лекції\n" +
-                "3 - вичтелі\n" +
+                "3 - викладачі\n" +
                 "4 - студенти");
         Scanner console = new Scanner(System.in);
         int category = console.nextInt();
         switch (category)   {
             case 1 -> CourseService.showCourses();
             case 2 -> LectureService.showLectures();
-            case 3 -> TeacherService.showTeachers();
-            case 4 -> StudentService.showStudents();
+            case 3 -> PersonService.showTeachers();
+            case 4 -> PersonService.showStudents();
         }
     }
 

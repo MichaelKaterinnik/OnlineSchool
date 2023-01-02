@@ -1,6 +1,4 @@
-package com.school.models.studytools;
-
-import com.school.models.Superclass;
+package com.school.models;
 
 public class Lecture extends Superclass {
     private static int counter = 0;
