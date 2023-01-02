@@ -2,6 +2,7 @@ package com.school;
 
 import com.school.models.Person;
 import com.school.models.Role;
+import com.school.models.repositories.LectureRepo;
 import com.school.models.repositories.PersonRepo;
 import com.school.models.services.PersonService;
 import com.school.models.Course;
@@ -147,10 +148,31 @@ public class MainService {
         int category = console.nextInt();
         switch (category)   {
             case 1 -> CourseService.showCourses();
-            case 2 -> LectureService.showLectures();
+            case 2 -> {
+                LectureService.showLectures();
+                System.out.println("Бажаєте додати викладача до однієї з лекцій? Натисніть 1, якщо так");
+                if (console.hasNextInt() && console.nextInt() == 1) {
+                    addTeacherToLecture();
+                }
+            }
             case 3 -> PersonService.showTeachers();
             case 4 -> PersonService.showStudents();
         }
+    }
+
+    private static void addTeacherToLecture()    {
+        PersonService personService = new PersonService();
+        Person teacher = personService.createTeacherByTerminal();
+        int data = teacher.getId();
+        Scanner console = new Scanner(System.in);
+        System.out.println("Введіть id лекції, якій потрібно додати викладача:");
+        int lectureID = console.nextInt();
+        //
+        // додати перевірку на корректність вводимих ID
+        //
+        LectureRepo.getInstance().getById(lectureID).setPersonID(data);
+        LectureRepo.getInstance().getById(lectureID).setTeacher(teacher);
+
     }
 
 }

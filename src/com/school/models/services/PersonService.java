@@ -2,6 +2,7 @@ package com.school.models.services;
 
 import com.school.models.Person;
 import com.school.models.Role;
+import com.school.models.repositories.LectureRepo;
 import com.school.models.repositories.PersonRepo;
 
 import java.util.Arrays;
@@ -27,7 +28,7 @@ public class PersonService {
         return new Person();
     }
 
-    public void createTeacherByTerminal()   {
+    public Person createTeacherByTerminal()   {
         Scanner console = new Scanner(System.in);
         PersonService personService = new PersonService();
         Person newPerson = personService.createPerson();
@@ -52,9 +53,10 @@ public class PersonService {
         }
         System.out.println("Додано викладача " + newPerson.getPersonFirstName() + " " + newPerson.getPersonSecondName());
         PersonRepo.getInstance().add(newPerson);
+        return newPerson;
     }
 
-    public void createStudentByTerminal()   {
+    public Person createStudentByTerminal()   {
         Scanner console = new Scanner(System.in);
         PersonService personService = new PersonService();
         Person newPerson = personService.createPerson();
@@ -79,6 +81,7 @@ public class PersonService {
         }
         System.out.println("Додано студента " + newPerson.getPersonFirstName() + " " + newPerson.getPersonSecondName());
         PersonRepo.getInstance().add(newPerson);
+        return newPerson;
     }
 
     public void createPersonByTerminal()    {
@@ -152,5 +155,6 @@ public class PersonService {
             System.out.println("ID наявних у базі осіб: " + person.getId());
         }
     }
+
 
 }

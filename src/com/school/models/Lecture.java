@@ -4,7 +4,9 @@ public class Lecture extends Superclass {
     private static int counter = 0;
     private int id;
     private int CourseID;
+    private int PersonID;
     private String lectureTopic;
+    private Person teacher;
     private Homework homework;
     private AdditionalMaterials addMaterial;
 
@@ -63,5 +65,17 @@ public class Lecture extends Superclass {
     }
     public void setAddMaterial(AdditionalMaterials addMaterial) {
         this.addMaterial = addMaterial;
+    }
+    public int getPersonID() {
+        return PersonID;
+    }
+    public void setPersonID(int personID) {
+        PersonID = personID;
+    }
+    public Person getTeacher() {
+        return teacher;
+    }
+    public void setTeacher(Person teacher) {
+        this.teacher = teacher;
     }
 }
