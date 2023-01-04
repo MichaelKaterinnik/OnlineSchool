@@ -1,7 +1,7 @@
-package com.school.models.services;
+package com.school.services;
 
 import com.school.models.Homework;
-import com.school.models.repositories.HomeworkRepo;
+import com.school.repositories.HomeworkRepo;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -20,26 +20,11 @@ public class HomeworkService {
         Scanner console = new Scanner(System.in);
         HomeworkService hwService = new HomeworkService();
         Homework newHomework = hwService.createHomework();
-        System.out.println(ENTER_HOMEWORK_NAME);
-        while (true) {
-            if (console.hasNextLine())  {
-                newHomework.setHomeworkTask(console.nextLine()); // тут зробити реалізацію через підгрузку тексту завдань з файла
-                break;
-            } else {
-                System.out.println(ENTER_HW_NAME_EXCEPTION);
-            }
-        }
-        System.out.println(ENTER_LECTURE_NUMBER);
-        while (true) {
-            if (console.hasNextInt())  {
-                newHomework.setLectureID(console.nextInt());
-                System.out.println("Ви присвоїли створене завдання лекції з ID №" + newHomework.getLectureID());
-                break;
-            } else {
-                System.out.println(ENTER_LECTURE_NUMBER_EXCEPTION);
-            }
-        }
+        hwService.defineHomeworkTask(newHomework);
+        hwService.defineLecture(newHomework);
         HomeworkRepo.getInstance().add(newHomework);
+        console.close();
+
     }
 
     public static void showHomeworks() {
@@ -47,5 +32,34 @@ public class HomeworkService {
         for (Homework homework : result) {
             System.out.println("ID наявного ДЗ: " + homework.getID());
         }
+    }
+
+    private void defineHomeworkTask(Homework homework)  {
+        Scanner console = new Scanner(System.in);
+        System.out.println(ENTER_HOMEWORK_NAME);
+        while (true) {
+            if (console.hasNextLine())  {
+                homework.setHomeworkTask(console.nextLine());
+                break;
+            } else {
+                System.out.println(ENTER_HW_NAME_EXCEPTION);
+            }
+        }
+        console.close();
+    }
+
+    private void defineLecture(Homework homework)  {
+        Scanner console = new Scanner(System.in);
+        System.out.println(ENTER_LECTURE_NUMBER);
+        while (true) {
+            if (console.hasNextInt())  {
+                homework.setLectureID(console.nextInt());
+                System.out.println("Ви присвоїли створене завдання лекції з ID №" + homework.getLectureID());
+                break;
+            } else {
+                System.out.println(ENTER_LECTURE_NUMBER_EXCEPTION);
+            }
+        }
+        console.close();
     }
 }

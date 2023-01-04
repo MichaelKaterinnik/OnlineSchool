@@ -1,4 +1,4 @@
-package com.school.models.repositories;
+package com.school.repositories;
 
 import com.school.models.SuperRepo;
 import com.school.models.Homework;

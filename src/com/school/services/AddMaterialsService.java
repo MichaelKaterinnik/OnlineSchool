@@ -1,7 +1,7 @@
-package com.school.models.services;
+package com.school.services;
 
 import com.school.models.AdditionalMaterials;
-import com.school.models.repositories.AddMatsRepo;
+import com.school.repositories.AddMatsRepo;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -20,26 +20,11 @@ public class AddMaterialsService {
         Scanner console = new Scanner(System.in);
         AddMaterialsService addService = new AddMaterialsService();
         AdditionalMaterials newAddMaterials = addService.createAdditionalMaterials();
-        System.out.println(ENTER_ADDMATERIALS_NAME);
-        while (true) {
-            if (console.hasNextLine())  {
-                newAddMaterials.setTopic(console.nextLine()); // тут зробити реалізацію через підгрузку тексту завдань з файла
-                break;
-            } else {
-                System.out.println(ENTER_AM_NAME_EXCEPTION);
-            }
-        }
-        System.out.println(ENTER_LECTURE_NUMBER);
-        while (true) {
-            if (console.hasNextInt())  {
-                newAddMaterials.setLectureID(console.nextInt());
-                System.out.println("Ви присвоїли створене завдання лекції з ID №" + newAddMaterials.getLectureID());
-                break;
-            } else {
-                System.out.println(ENTER_LECTURE_NUMBER_EXCEPTION);
-            }
-        }
+        addService.defineAddMaterialsName(newAddMaterials);
+        addService.defineAddMaterialsLecture(newAddMaterials);
         AddMatsRepo.getInstance().add(newAddMaterials);
+        console.close();
+
     }
 
     public static void showAddMaterials()  {
@@ -47,5 +32,34 @@ public class AddMaterialsService {
         for (AdditionalMaterials additionalMaterials : result) {
             System.out.println("ID наявних додаткових матеріалів: " + additionalMaterials.getId());
         }
+    }
+
+    private void defineAddMaterialsName(AdditionalMaterials materials)  {
+        Scanner console = new Scanner(System.in);
+        System.out.println(ENTER_ADDMATERIALS_NAME);
+        while (true) {
+            if (console.hasNextLine())  {
+                materials.setName(console.nextLine()); // тут зробити реалізацію через підгрузку тексту завдань з файла
+                break;
+            } else {
+                System.out.println(ENTER_AM_NAME_EXCEPTION);
+            }
+        }
+        console.close();
+    }
+
+    private void defineAddMaterialsLecture(AdditionalMaterials materials)  {
+        Scanner console = new Scanner(System.in);
+        System.out.println(ENTER_LECTURE_NUMBER);
+        while (true) {
+            if (console.hasNextInt())  {
+                materials.setLectureID(console.nextInt());
+                System.out.println("Ви присвоїли створене завдання лекції з ID №" + materials.getLectureID());
+                break;
+            } else {
+                System.out.println(ENTER_LECTURE_NUMBER_EXCEPTION);
+            }
+        }
+        console.close();
     }
 }

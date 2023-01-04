@@ -58,7 +58,7 @@ public class SuperRepo {
     }
 
     private void grow() {
-        capacity = (int) (capacity * 3) / 2 + 1;
+        capacity = (capacity * 3) / 2 + 1;
         Superclass[] superRepository = new Superclass[capacity];
         System.arraycopy(repository, 0, superRepository, 0, repository.length);
         repository = superRepository;

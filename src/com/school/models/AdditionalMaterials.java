@@ -3,7 +3,7 @@ package com.school.models;
 public class AdditionalMaterials extends Superclass {
     private static int counter = 0;
     private int id;
-    private String topic;
+    private String name;
     private int lectureID;
 
     // constructors:
@@ -18,11 +18,11 @@ public class AdditionalMaterials extends Superclass {
     public int getId() {
         return id;
     }
-    public void setTopic(String topic) {
-        this.topic = topic;
+    public void setName(String topic) {
+        this.name = topic;
     }
-    public String getTopic() {
-        return topic;
+    public String getName() {
+        return name;
     }
     public void setLectureID(int lectureID) {
         this.lectureID = lectureID;

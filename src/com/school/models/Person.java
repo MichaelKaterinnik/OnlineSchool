@@ -6,25 +6,28 @@ public class Person extends Superclass {
     private int id;
     private int courseID;
     private String personFirstName;
-    private String personSecondName;
+    private String personLastName;
+    private String phone;
+    private String email;
 
 
     // constructors:
-    public Person(Role role, String firstName, String secondName)    {
+    public Person(Role role, String firstName, String lastName)    {
         this.role = role;
         this.personFirstName = firstName;
-        this.personSecondName = secondName;
+        this.personLastName = lastName;
         ++counter;
         this.id = counter;
     }
-    public Person(Role role, String secondName)    {
-        this.personSecondName = secondName;
+    public Person(Role role, String lastName)    {
+        this.personLastName = lastName;
         this.role = role;
         ++counter;
         this.id = counter;
     }
-    public Person(String secondName)    {
-        this.personSecondName = secondName;
+    public Person(String firstName, String lastName)    {
+        this.personFirstName = firstName;
+        this.personLastName = lastName;
         ++counter;
         this.id = counter;
     }
@@ -42,8 +45,8 @@ public class Person extends Superclass {
     public void setPersonFirstName(String personFirstName) { this.personFirstName = personFirstName; }
     public String getPersonFirstName() { return personFirstName; }
 
-    public void setPersonSecondName(String personSecondName) { this.personSecondName = personSecondName; }
-    public String getPersonSecondName() { return personSecondName; }
+    public void setPersonLastName(String personLastName) { this.personLastName = personLastName; }
+    public String getPersonLastName() { return personLastName; }
 
     public Role getRole() {
         return role;
@@ -57,5 +60,19 @@ public class Person extends Superclass {
     }
     public void setCourseID(int courseID) {
         this.courseID = courseID;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
