@@ -39,7 +39,7 @@ public class LectureService {
         // ДОДАТИ потім ралізацію відкладеного присвоєння лекції ID курсу
         //
         lectureService.defineTeacher(newLecture);
-        LectureRepo.getInstance().add(newLecture);
+        LectureRepo.getInstance().addLecture(newLecture);
         console.close();
 
     }

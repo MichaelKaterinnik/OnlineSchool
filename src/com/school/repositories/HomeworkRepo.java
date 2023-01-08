@@ -1,12 +1,11 @@
 package com.school.repositories;
 
-import com.school.models.SuperRepo;
 import com.school.models.Homework;
+import com.school.models.Lecture;
 
 public class HomeworkRepo extends SuperRepo {
-    private int index = 0;
-    private int capacity = 10;
-    private Homework[] homeworkRepository = new Homework[capacity];
+    private static Storage<Homework> storage = new Storage<>();
+
 
     private HomeworkRepo() {
     }
@@ -21,48 +20,18 @@ public class HomeworkRepo extends SuperRepo {
     }
 
     public static Homework[] getAll() {
-        return HomeworkRepo.getInstance().homeworkRepository;
+        return storage.getAll();
     }
 
-    public void add(Homework newHomework) {
-        if (index == capacity) {
-            grow();
-        }
-        homeworkRepository[index] = newHomework;
-        index++;
+    public void addS(Homework hw) {
+        storage.add(hw);
     }
 
-    public Homework getById(int id)    {
-        for (Homework hw : homeworkRepository) {
-            if (hw.getId() == id) {
-                return hw;
-            }
-        }
-        return null;
+    public Homework getById(int id) {
+        return storage.get(id);
     }
 
-    public void deleteById(int id)   {
-        int pic = 0;
-        for (int i = 0; i < homeworkRepository.length; i++)    {
-            if (homeworkRepository[i] != null && homeworkRepository[i].getId() == id)   {
-                homeworkRepository[i] = null;
-            }
-            pic = i;
-        }
-        if (pic < homeworkRepository.length - 1) {
-            while (pic < homeworkRepository.length - 1) {
-                homeworkRepository[pic] = homeworkRepository[pic + 1];
-                pic++;
-            }
-            homeworkRepository[homeworkRepository.length - 1] = null;
-        }
-        HomeworkRepo.getInstance().index--;
-    }
-
-    private void grow() {
-        capacity = (capacity * 3) / 2 + 1;
-        Homework[] newHomeworkRepository = new Homework[capacity];
-        System.arraycopy(homeworkRepository, 0, newHomeworkRepository, 0, homeworkRepository.length);
-        homeworkRepository = newHomeworkRepository;
+    public void deleteById(int id) {
+        storage.remove(id);
     }
 }

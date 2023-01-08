@@ -1,12 +1,12 @@
 package com.school.repositories;
 
-import com.school.models.SuperRepo;
 import com.school.models.Course;
+import com.school.models.Lecture;
+import com.school.models.Person;
 
 public class CourseRepo extends SuperRepo {
-    private int index = 0;
-    private int capacity = 10;
-    private Course[] coursesRepository = new Course[capacity];
+    private static Storage<Course> storage = new Storage<>();
+
 
     private CourseRepo() {
     }
@@ -21,48 +21,18 @@ public class CourseRepo extends SuperRepo {
     }
 
     public static Course[] getAll() {
-        return CourseRepo.getInstance().coursesRepository;
+        return storage.getAll();
     }
 
-    public void add(Course newCourse) {
-        if (index == capacity) {
-            grow();
-        }
-        coursesRepository[index] = newCourse;
-        index++;
+    public void addS(Course course) {
+        storage.add(course);
     }
 
-    public Course getById(int id)    {
-        for (Course course : coursesRepository) {
-            if (course.getId() == id) {
-                return course;
-            }
-        }
-        return null;
+    public Course getById(int id) {
+        return storage.get(id);
     }
 
-    public void deleteById(int id)   {
-        int pic = 0;
-        for (int i = 0; i < coursesRepository.length; i++)    {
-            if (coursesRepository[i] != null && coursesRepository[i].getId() == id)   {
-                coursesRepository[i] = null;
-            }
-            pic = i;
-        }
-        if (pic < coursesRepository.length - 1) {
-            while (pic < coursesRepository.length - 1) {
-                coursesRepository[pic] = coursesRepository[pic + 1];
-                pic++;
-            }
-            coursesRepository[coursesRepository.length - 1] = null;
-        }
-        CourseRepo.getInstance().index--;
-    }
-
-    private void grow() {
-        capacity = (capacity * 3) / 2 + 1;
-        Course[] newCoursesRepository = new Course[capacity];
-        System.arraycopy(coursesRepository, 0, newCoursesRepository, 0, coursesRepository.length);
-        coursesRepository = newCoursesRepository;
+    public void deleteById(int id) {
+        storage.remove(id);
     }
 }
